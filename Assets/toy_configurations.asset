@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151eb14828f8313429b0b0af2049f2ab, type: 3}
+  m_Name: toy_configurations
+  m_EditorClassIdentifier: 
+  BodyPrefab: {fileID: 884584087827422364, guid: c1c20115dbd7d1746a969cba4ecb757b,
+    type: 3}
+  PartPrefabRight: {fileID: 6855317268707617387, guid: e4182b49857e00b4eafc7c1d3dc859d7,
+    type: 3}
+  PartPrefabLeft: {fileID: 3543838169972481870, guid: 597c447ec22c55c4caff056ec376d621,
+    type: 3}
+  BodyPartConfigurations:
+  - ToyBodies: []
+    id: robot_l
+    ToyId: robot
+    Prefab: {fileID: -927199367670048503, guid: fbf1a2572d555204cab6ef88e2ee8f90,
+      type: 3}
+    TargetSlot: 0
+  - ToyBodies: []
+    id: robot_r
+    ToyId: robot
+    Prefab: {fileID: -927199367670048503, guid: 6b1e00a56d4c43b44a3417f21ae96ed0,
+      type: 3}
+    TargetSlot: 1
