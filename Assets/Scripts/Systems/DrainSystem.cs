@@ -80,6 +80,7 @@ public class DrainSystem : MonoBehaviour
 
     private void FinishDrain()
     {
+        isDraining = false;
         Events.Drain.Finish.SafeInvoke();
     }
 }

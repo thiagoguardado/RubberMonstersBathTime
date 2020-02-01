@@ -7,12 +7,16 @@ using System.Linq;
 [System.Serializable]
 public class Mission
 {
+    int id;
     List<string> ids = new List<string>(2);
     int value;
     private bool isFullfilled;
 
-    public Mission(string id1, string id2, int value)
+    public int Id { get => id;}
+
+    public Mission(int id, string id1, string id2, int value)
     {
+        this.id = id;
         this.ids.Add(id1);
         this.ids.Add(id2);
         this.value = value;
@@ -65,6 +69,9 @@ public class MissionsController : MonoBehaviour
     private float lastTick;
     private float levelsTimer = 0f;
     private float missionTimer = 0f;
+    private int createdMissions { get { return fulfilledMissions.Count + activeMissions.Count; } }
+
+    public List<Mission> ActiveMissions { get => activeMissions; }
 
     private ToysController toyController;
 
@@ -74,6 +81,12 @@ public class MissionsController : MonoBehaviour
 
         Events.Level.Start += StartMissions;
         Events.Timer.Tick += Tick;
+    }
+
+    private void OnDestroy()
+    {
+        Events.Level.Start -= StartMissions;
+        Events.Timer.Tick -= Tick;
     }
 
     private void StartMissions()
@@ -159,10 +172,8 @@ public class MissionsController : MonoBehaviour
         {
             string id1 = ids[UnityEngine.Random.Range(0, ids.Length)];
             string id2 = ids[UnityEngine.Random.Range(0, ids.Length)];
-            Mission newMission = new Mission(id1, id2, value);
-            activeMissions.Add(newMission);
 
-            Events.Missions.NewMission.SafeInvoke(newMission);
+            CreateMission(id1,id2,value);
         }
 
         void CreatePossible(List<string> activeToys)
@@ -209,7 +220,7 @@ public class MissionsController : MonoBehaviour
 
     private void CreateMission(string id1, string id2, int value)
     {
-        Mission newMission = new Mission(id1, id2, value);
+        Mission newMission = new Mission(createdMissions + 1, id1, id2, value);
         activeMissions.Add(newMission);
 
         Events.Missions.NewMission.SafeInvoke(newMission);
