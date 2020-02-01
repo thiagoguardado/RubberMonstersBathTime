@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 966617432187171229}
   - component: {fileID: 966617432187171231}
   - component: {fileID: 966617432187171230}
+  - component: {fileID: 7373202922921697125}
+  - component: {fileID: 1283865736}
   m_Layer: 8
   m_Name: FloatingItem
   m_TagString: FloatingItem
@@ -125,3 +127,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialVelocity: {x: 0, y: 0, z: 0}
   maxVelocity: 25
+--- !u!114 &7373202922921697125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966617432187171228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75a567134d1db344a3aca4ba9e56340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: 0
+  turnRate: 5
+  maxAngle: 13
+  lerpFactor: 0.5
+--- !u!114 &1283865736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966617432187171228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75a567134d1db344a3aca4ba9e56340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: 2
+  turnRate: 4.5
+  maxAngle: 13
+  lerpFactor: 0.5
