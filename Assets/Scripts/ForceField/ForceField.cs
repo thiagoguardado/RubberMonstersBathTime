@@ -10,11 +10,13 @@ public class ForceField : MonoBehaviour
     public LayerMask layersInfluenced;
     
     private Vector3 directionNormalized { get { return direction.normalized; } }
-    Collider collider;
+    private Collider col;
+
+    private Collider[] hitColliders;
 
     void Awake()
     {
-        collider = GetComponent<Collider>();
+        col = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class ForceField : MonoBehaviour
 
     void InduceObjectsInside()
     {
-        Collider[] hitColliders = Physics.OverlapBox(transform.position, collider.bounds.extents, Quaternion.identity, layersInfluenced);
+        hitColliders = Physics.OverlapBox(transform.position, col.bounds.extents, Quaternion.identity, layersInfluenced);
         for (int i = 0; i < hitColliders.Length; i++)
         {
             ForceInduced forceInduced = hitColliders[i].GetComponent<ForceInduced>();
