@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BodyPart : MonoBehaviour
 {
+    public int OriginalSlot;
     public Transform TargetPosition;
+    public int TargetSlot;
 
     public void Start()
     {
@@ -18,6 +20,11 @@ public class BodyPart : MonoBehaviour
         }
 
         transform.position = Vector3.Lerp(transform.position, TargetPosition.position, 20 * Time.deltaTime);
-        transform.localRotation = Quaternion.Lerp(transform.rotation, TargetPosition.rotation, 20 * Time.deltaTime);
+        Quaternion targetRotation = TargetPosition.rotation;
+        if(OriginalSlot != TargetSlot)
+        {
+            targetRotation *= Quaternion.Euler(0, 180, 0);
+        }
+        transform.localRotation = Quaternion.Lerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
     }
 }

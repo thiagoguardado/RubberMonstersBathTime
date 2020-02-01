@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,9 @@ public class ToyBody : MonoBehaviour
     public Transform[] singleBodyPosition;
     public Transform[] fullBodyPositions;
 
+    public bool[] freeSlots = new bool[]{true, true};
     private Transform[] currentBodyConfiguration;
+
     public List<BodyPart> BodyParts;
     // Update is called once per frame
     public void Start()
@@ -28,7 +31,6 @@ public class ToyBody : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GetBodyParts();
             UpdateBodyPartPositions();
         }
 
@@ -50,10 +52,6 @@ public class ToyBody : MonoBehaviour
         Protected = false;
     }
 
-    public void GetBodyParts()
-    {
-        
-    }
     void UpdateBodyPartPositions()
     {
         singleBodyRoot.SetActive(false);
@@ -67,18 +65,42 @@ public class ToyBody : MonoBehaviour
             case 1:
                 currentBodyConfiguration = singleBodyPosition;
                 singleBodyRoot.SetActive(true);
+                BodyParts[0].TargetPosition = singleBodyPosition[0];
+                BodyParts[0].TargetSlot = BodyParts[0].OriginalSlot;
                 break;
             case 2:
-                currentBodyConfiguration = fullBodyPositions;
                 fullBodyRoot.SetActive(true);
+                freeSlots[0] = true;
+                freeSlots[1] = true;
+                for(int i = 0; i < BodyParts.Count; i++)
+                {
+                    int slot;
+                    if(freeSlots[BodyParts[i].OriginalSlot])
+                    {
+                        slot = BodyParts[i].OriginalSlot;
+                    }
+                    else
+                    {
+                        slot = GetFreeSlotIndex();
+                    }
+                    BodyParts[i].TargetPosition = fullBodyPositions[slot];
+                    BodyParts[i].TargetSlot = slot;
+                    freeSlots[slot] = false;
+                }
                 break;
+        }
+    }
 
-        }
-        
-        for(int i = 0; i < BodyParts.Count; i++)
+    private int GetFreeSlotIndex()
+    {
+        for(int i = 0; i < freeSlots.Length; i++)
         {
-            BodyParts[i].TargetPosition = currentBodyConfiguration[i];
+            if(freeSlots[i])
+            {
+                return i;
+            }
         }
+        return 0;
     }
 
     public void Split()
