@@ -21,10 +21,17 @@ public class BodyPart : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, TargetPosition.position, 20 * Time.deltaTime);
         Quaternion targetRotation = TargetPosition.rotation;
+        var scale = transform.localScale;
         if(OriginalSlot != TargetSlot)
         {
-            targetRotation *= Quaternion.Euler(0, 180, 0);
+            targetRotation *= Quaternion.Euler(0, 0, 180);
+            scale.y = -Mathf.Abs(scale.y);
         }
+        else
+        {
+            scale.y = Mathf.Abs(scale.y);
+        }
+        transform.localScale = scale;
         transform.localRotation = Quaternion.Lerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
     }
 }
