@@ -5,37 +5,47 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public float levelDuration;
+    private void Start()
+    {
+        StartLevel();
 
-    private TimerSystem timerSystem;
+        FindObjectOfType<DrainSystem>().StartDrain();
+    }
 
     private void Awake()
     {
-        timerSystem = FindObjectOfType<TimerSystem>();
-
-        Events.Timer.TimerFinished += HandleFinishTimer;
+        Events.Drain.Finish += FinishLevel;
     }
 
     private void OnDestroy()
     {
-        Events.Timer.TimerFinished += HandleFinishTimer;
+        Events.Drain.Finish -= FinishLevel;
     }
 
-    private void HandleFinishTimer()
+    void StartLevel()
     {
-        Events.Level.LevelFinished.SafeInvoke();
+        Events.Level.Start.SafeInvoke();
+
+        Debug.Log("Level Started");
+    }
+
+    void FinishLevel()
+    {
+        Events.Level.Finish.SafeInvoke();
 
         Debug.Log("Level Finished");
     }
 
-    void Start()
+
+    public void Pause(bool isPaused)
     {
-        timerSystem.StartTimer(levelDuration);
-
-        Events.Level.LevelStarted.SafeInvoke();
-        
-        Debug.Log("Level Started");
+        if (isPaused)
+        {
+            Events.Level.Pause.SafeInvoke();
+        }
+        else
+        {
+            Events.Level.Unpause.SafeInvoke();
+        }
     }
-
-
 }

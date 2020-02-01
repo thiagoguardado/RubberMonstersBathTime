@@ -5,33 +5,38 @@ using UnityEngine;
 public class TimerSystem : MonoBehaviour
 {
     private float timer = 0f;
-    private float duration = 0f;
     private bool isRunnning = false;
     private bool isPaused = false;
+
+    private void Awake()
+    {
+        Events.Level.Start += StartTimer;
+        Events.Level.Pause += () => PauseTimer(true);
+        Events.Level.Unpause += () => PauseTimer(false);
+        Events.Level.Finish += FinishTimer;
+    }
+    private void OnDestroy()
+    {
+        Events.Level.Start -= StartTimer;
+        Events.Level.Pause -= () => PauseTimer(true);
+        Events.Level.Unpause -= () => PauseTimer(false);
+        Events.Level.Finish -= FinishTimer;
+    }
 
     private void Update()
     {
         if (isRunnning && !isPaused)
         {
             timer += Time.deltaTime;
-            timer = Mathf.Clamp(timer, 0, duration);
 
             TickTimer();
-
-            if (timer >= duration)
-            {
-                Finish();
-            }
         }
     }
 
-    public void StartTimer(float duration)
+    public void StartTimer()
     {
         this.timer = 0f;
-        this.duration = duration;
         this.isRunnning = true;
-
-        Events.Timer.TimerStarted.SafeInvoke();
 
         TickTimer();
     }
@@ -44,27 +49,23 @@ public class TimerSystem : MonoBehaviour
             if (!this.isPaused && isPaused)
             {
                 this.isPaused = isPaused;
-                Events.Timer.TimerPaused();
             }
 
             // unpause
             if (this.isPaused && !isPaused)
             {
                 this.isPaused = isPaused;
-                Events.Timer.TimerUnpaused();
             }
         }
     }
 
-    public void Finish()
+    public void FinishTimer()
     {
         isRunnning = false;
-
-        Events.Timer.TimerFinished.SafeInvoke();
     }
 
     private void TickTimer()
     {
-        Events.Timer.TimerTick.SafeInvoke(1 - timer / duration);
+        Events.Timer.Tick.SafeInvoke(timer);
     }
 }

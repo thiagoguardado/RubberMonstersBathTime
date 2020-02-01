@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerSlider : MonoBehaviour
+public class DrainSlider : MonoBehaviour
 {
     public Slider slider;
 
     private void Awake()
     {
-        Events.Timer.TimerStarted += Reset;
-        Events.Timer.TimerTick += Refresh;
+        Events.Drain.Tick += Refresh;
     }
 
     private void OnDestroy()
     {
-        Events.Timer.TimerStarted -= Reset;
-        Events.Timer.TimerTick -= Refresh;
+        Events.Drain.Tick -= Refresh;
+    }
+
+    private void Start()
+    {
+        Reset();
     }
 
     private void Reset()

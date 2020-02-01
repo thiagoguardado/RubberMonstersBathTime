@@ -12,14 +12,14 @@ public class MovingStructure : MonoBehaviour
 
     void Awake()
     {
-        Events.Timer.TimerStarted += SetStartAsGoal;
-        Events.Timer.TimerTick += SetInterpolatedAsGoal;
+        Events.Level.Start += SetStartAsGoal;
+        Events.Drain.Tick += SetInterpolatedAsGoal;
     }
 
     void OnDestroy()
     {
-        Events.Timer.TimerStarted -= SetStartAsGoal;
-        Events.Timer.TimerTick -= SetInterpolatedAsGoal;
+        Events.Level.Start -= SetStartAsGoal;
+        Events.Drain.Tick -= SetInterpolatedAsGoal;
     }
 
     void Start()
