@@ -16,6 +16,9 @@ public class DrainSystem : MonoBehaviour
         Events.Level.Start += UnpauseDrain;
         Events.Level.Pause += PauseDrain;
         Events.Level.Unpause += UnpauseDrain;
+
+        Events.Missions.MaxMissionsReached += StartDrain;
+        Events.Missions.MaxMissionsCleared += StopDrain;
     }
 
     private void OnDestroy()
@@ -23,25 +26,33 @@ public class DrainSystem : MonoBehaviour
         Events.Level.Start -= UnpauseDrain;
         Events.Level.Pause -= PauseDrain;
         Events.Level.Unpause -= UnpauseDrain;
+
+        Events.Missions.MaxMissionsReached -= StartDrain;
+        Events.Missions.MaxMissionsCleared -= StopDrain;
     }
 
-    public void StartDrain()
+    private void Start()
+    {
+        Reset();
+    }
+
+    private void StartDrain()
     {
         isDraining = true;
     }
 
-    public void StopDrain()
+    private void StopDrain()
     {
         isDraining = false;
     }
 
-    public void Reset()
+    private void Reset()
     {
         timer = 0f;
-        
+
         isPaused = false;
         isDraining = false;
-        
+
         Events.Drain.Tick.SafeInvoke(drainLevel);
     }
 
@@ -55,11 +66,6 @@ public class DrainSystem : MonoBehaviour
         isPaused = false;
     }
 
-    private void FinishDrain()
-    {
-        Events.Drain.Finish.SafeInvoke();
-    }
-
     private void Update()
     {
         if (!isPaused && isDraining)
@@ -70,5 +76,10 @@ public class DrainSystem : MonoBehaviour
         }
 
         if (drainLevel <= 0) FinishDrain();
+    }
+
+    private void FinishDrain()
+    {
+        Events.Drain.Finish.SafeInvoke();
     }
 }

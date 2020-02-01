@@ -21,4 +21,12 @@ public static class Events
         public static Action<float> Tick;
         public static Action Finish;
     }
+
+    public static class Missions
+    {
+        public static Action<Mission> FulfillMission;
+        public static Action<Mission> NewMission;
+        public static Action MaxMissionsReached;
+        public static Action MaxMissionsCleared;
+    }
 }

@@ -8,8 +8,6 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         StartLevel();
-
-        FindObjectOfType<DrainSystem>().StartDrain();
     }
 
     private void Awake()
