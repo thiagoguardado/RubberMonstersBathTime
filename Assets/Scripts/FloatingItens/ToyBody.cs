@@ -52,7 +52,7 @@ public class ToyBody : MonoBehaviour
         Protected = false;
     }
 
-    void UpdateBodyPartPositions()
+    public void UpdateBodyPartPositions()
     {
         singleBodyRoot.SetActive(false);
         fullBodyRoot.SetActive(false);
@@ -112,7 +112,7 @@ public class ToyBody : MonoBehaviour
 
         BodyPart removedPart = BodyParts[1];
         BodyParts.RemoveAt(1);
-        ToyBodyFactory.Instance.InstantiateBody(removedPart, transform.position + (Vector3.forward * .5f), transform.rotation);
+        ToyBodyFactory.Instance.InstantiateBody(removedPart, null, transform.position + (Vector3.forward * .5f), transform.rotation);
         UpdateBodyPartPositions();
         ProtectAgainstSpamming();
     }

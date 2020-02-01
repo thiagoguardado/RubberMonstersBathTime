@@ -7,19 +7,21 @@ public class BodyPart : MonoBehaviour
     public int OriginalSlot;
     public Transform TargetPosition;
     public int TargetSlot;
+    public GameObject ModelContainer;
 
     public void Start()
     {
-        transform.parent = null;
+        transform.parent = ToyBodyFactory.Instance.BodyPartParent;
     }
-    public void Update()
-    {
-        if(!enabled || TargetPosition == null)
-        {
-            return;
-        }
 
-        transform.position = Vector3.Lerp(transform.position, TargetPosition.position, 20 * Time.deltaTime);
+    public void UpdateImmediately()
+    {
+        UpdatePosition(true);
+    }
+    public void UpdatePosition(bool immediately)
+    {
+        float lerpValue = immediately ? 1 : 7 * Time.deltaTime;
+        transform.position = Vector3.Lerp(transform.position, TargetPosition.position, lerpValue);
         Quaternion targetRotation = TargetPosition.rotation;
         var scale = transform.localScale;
         if(OriginalSlot != TargetSlot)
@@ -32,6 +34,16 @@ public class BodyPart : MonoBehaviour
             scale.y = Mathf.Abs(scale.y);
         }
         transform.localScale = scale;
-        transform.localRotation = Quaternion.Lerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
+        transform.localRotation = Quaternion.Lerp(transform.rotation, targetRotation, lerpValue);
+    }
+
+    public void Update()
+    {
+        if(!enabled || TargetPosition == null)
+        {
+            return;
+        }
+
+        UpdatePosition(false);
     }
 }
