@@ -4,53 +4,74 @@ using UnityEngine;
 
 public class Vortex : MonoBehaviour
 {
-    private float radius = 10f;
+
     public LayerMask influencedLayers;
     public Color debugColor = Color.cyan;
-
+    private float initiaScale;
     private bool isActive = false;
-    private Vector3 pivot;
     private float radialIntensity;
     private float tangencialIntensity;
     private Collider[] hitColliders;
+    private SpriteRenderer sprite;
+    private float spriteSizeRatio;
+
+    private float radius { get { return transform.localScale.x; } }
+
+    private void Awake()
+    {
+        initiaScale = transform.localScale.x;
+
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite.enabled = true;
+        sprite.gameObject.SetActive(false);
+        spriteSizeRatio = sprite.transform.localScale.x / radius;
+    }
 
     private void Update()
     {
         InfluenceObjects();
     }
 
-    public void StartVortex(Vector3 position, float radialIntensity, float tangencialIntensity, float radius)
+    public void StartVortex(Vector3 position, float radialIntensity, float tangencialIntensity, float radius = -1f)
     {
+        this.transform.position = position;
         this.isActive = true;
-        this.pivot = position;
         this.radialIntensity = radialIntensity;
         this.tangencialIntensity = tangencialIntensity;
-        this.radius = radius;
+        if (radius != -1f)
+        {
+            this.transform.localScale = Vector3.one * radius;
+            sprite.transform.localScale = Vector3.one * spriteSizeRatio * radius;
+        }
+
+        sprite.gameObject.SetActive(true);
     }
 
     public void MoveVortex(Vector3 position)
     {
-        this.pivot = position;
+        transform.position = position;
     }
 
     public void StopVortex()
     {
         this.isActive = false;
+
+        sprite.gameObject.SetActive(false);
     }
 
     private void InfluenceObjects()
     {
         if (!isActive) return;
 
-        Collider[] hitColliders = Physics.OverlapSphere(pivot, radius, influencedLayers);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, influencedLayers);
         for (int i = 0; i < hitColliders.Length; i++)
         {
             ForceInduced forceInduced = hitColliders[i].GetComponent<ForceInduced>();
             if (forceInduced != null)
             {
-                float distance = (hitColliders[i].transform.position - pivot).magnitude;
+                float distance = (hitColliders[i].transform.position - transform.position).magnitude;
 
-                Vector3 radialForceDirection = pivot - forceInduced.transform.position;
+                Vector3 radialForceDirection = transform.position - forceInduced.transform.position;
                 float radialIntensityAdjust = radialIntensity * 100 * distance / radius; // make force proportional to distance
                 Vector3 radialForce = radialForceDirection.normalized * radialIntensityAdjust * Time.deltaTime;
 
@@ -63,12 +84,11 @@ public class Vortex : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
-        if (isActive)
-        {
-            Gizmos.color = new Color(debugColor.r, debugColor.g, debugColor.b, 0.5f);
-            Gizmos.DrawSphere(pivot, radius);
-        }
+
+        Gizmos.color = new Color(debugColor.r, debugColor.g, debugColor.b, 0.5f);
+        Gizmos.DrawSphere(transform.position, radius);
+
     }
 }

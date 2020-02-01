@@ -8,7 +8,6 @@ public class VortexController : MonoBehaviour
     public LayerMask waterSurfaceLayer;
     public float vortexRadialIntensity = 100f;
     public float vortexTangencialIntensity = 100f;
-    public float radius = 10f;
     private float maxRayDistace = 1000f;
 
     private InputController inputController;
@@ -40,7 +39,7 @@ public class VortexController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(clickRay, out hit, maxRayDistace, waterSurfaceLayer, QueryTriggerInteraction.Collide))
         {
-            vortex.StartVortex(hit.point, vortexRadialIntensity, vortexTangencialIntensity, radius);
+            vortex.StartVortex(hit.point, vortexRadialIntensity, vortexTangencialIntensity);
         }
     }
 
