@@ -44,8 +44,6 @@ public class FloatingBehaviour : MonoBehaviour
                 break;
         }
 
-        Debug.Log(angle);
-
         targetRotation = Quaternion.Euler(euler);
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, lerpFactor);
     }
