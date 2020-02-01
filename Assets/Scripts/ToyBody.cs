@@ -6,6 +6,8 @@ public class ToyBody : MonoBehaviour
 {
     static int LastId = 0;
 
+    public bool Protected = true;
+
     public int Id{get; private set;}
     public GameObject singleBodyRoot;
     public GameObject fullBodyRoot;
@@ -19,7 +21,9 @@ public class ToyBody : MonoBehaviour
     {
         Id = ++LastId;
         UpdateBodyPartPositions();
+        ProtectAgainstSpamming();
     }
+
     public void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
@@ -32,6 +36,18 @@ public class ToyBody : MonoBehaviour
         {
             Split();
         }
+    }
+
+    void ProtectAgainstSpamming()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ProtectAgainstSpammingCR());
+    }
+    IEnumerator ProtectAgainstSpammingCR()
+    {
+        Protected = true;
+        yield return new WaitForSeconds(1);
+        Protected = false;
     }
 
     public void GetBodyParts()
@@ -74,8 +90,9 @@ public class ToyBody : MonoBehaviour
 
         BodyPart removedPart = BodyParts[1];
         BodyParts.RemoveAt(1);
-        ToyBodyFactory.Instance.InstantiateBody(removedPart, transform.position + (Vector3.up * 2), transform.rotation);
+        ToyBodyFactory.Instance.InstantiateBody(removedPart, transform.position + (Vector3.forward * .5f), transform.rotation);
         UpdateBodyPartPositions();
+        ProtectAgainstSpamming();
     }
 
     public void Join(ToyBody other)
@@ -97,13 +114,16 @@ public class ToyBody : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        if(Protected) return;
         ToyBody other = collision.gameObject.GetComponent<ToyBody>();
         if(other == null) return;
         if(other.Id < Id) return;
+        if(other.Protected) return;
 
         if(this.BodyParts.Count == 1 && other.BodyParts.Count == 1)
         {
             other.Join(this);
+            ProtectAgainstSpamming();
         }
         else
         {
