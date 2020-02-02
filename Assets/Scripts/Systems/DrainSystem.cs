@@ -38,11 +38,13 @@ public class DrainSystem : MonoBehaviour
 
     private void StartDrain()
     {
+        Events.Drain.Start.SafeInvoke();
         isDraining = true;
     }
 
     private void StopDrain()
     {
+        Events.Drain.Stop.SafeInvoke();
         isDraining = false;
     }
 
@@ -73,14 +75,16 @@ public class DrainSystem : MonoBehaviour
             timer += Time.deltaTime;
 
             Events.Drain.Tick.SafeInvoke(drainLevel);
+
+            if (drainLevel <= 0) FinishDrain();
         }
 
-        if (drainLevel <= 0) FinishDrain();
+        
     }
 
     private void FinishDrain()
     {
-        isDraining = false;
+        StopDrain();
         Events.Drain.Finish.SafeInvoke();
     }
 }

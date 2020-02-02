@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151eb14828f8313429b0b0af2049f2ab, type: 3}
+  m_Name: toy_configurations
+  m_EditorClassIdentifier: 
+  BodyPrefab: {fileID: 884584087827422364, guid: c1c20115dbd7d1746a969cba4ecb757b,
+    type: 3}
+  PartPrefabRight: {fileID: 6855317268707617387, guid: e4182b49857e00b4eafc7c1d3dc859d7,
+    type: 3}
+  PartPrefabLeft: {fileID: 3543838169972481870, guid: 597c447ec22c55c4caff056ec376d621,
+    type: 3}
+  BodyPartConfigurations:
+  - ToyBodies: []
+    id: robot
+    LeftPrefab: {fileID: -927199367670048503, guid: 6b1e00a56d4c43b44a3417f21ae96ed0,
+      type: 3}
+    RightPrefab: {fileID: -927199367670048503, guid: fbf1a2572d555204cab6ef88e2ee8f90,
+      type: 3}
+    LeftUiImage: {fileID: -1720726498158791514, guid: 8fa2839bd39682a40892006dc6f93731,
+      type: 3}
+    RightUiImage: {fileID: 4351101696639539703, guid: 0c93234bf25e40e4fb7b96290488e402,
+      type: 3}
+  - ToyBodies: []
+    id: demon
+    LeftPrefab: {fileID: -927199367670048503, guid: 2d51ef2e4d586ca47b7fd49ec82d0e4f,
+      type: 3}
+    RightPrefab: {fileID: -927199367670048503, guid: d3b393e592d674541a54e8b60d638d0f,
+      type: 3}
+    LeftUiImage: {fileID: -4897855312749749410, guid: 6227993db8c667c49a38ab8e061d626e,
+      type: 3}
+    RightUiImage: {fileID: -8142140591827123250, guid: 4a02296c0601c604b860fab37249ebce,
+      type: 3}
+  - ToyBodies: []
+    id: spike
+    LeftPrefab: {fileID: -927199367670048503, guid: ffaa8b99d90fe594bbc55936e9a709e5,
+      type: 3}
+    RightPrefab: {fileID: -927199367670048503, guid: 5d01afd7e8344274d97dbb05bdf4fa18,
+      type: 3}
+    LeftUiImage: {fileID: 21300000, guid: 476ed7d291bdf4c48b5bfcb6c4b71e62, type: 3}
+    RightUiImage: {fileID: 21300000, guid: 81dcfbb254dcc2f42a1812aaa246f7fe, type: 3}
+  - ToyBodies: []
+    id: duck
+    LeftPrefab: {fileID: -927199367670048503, guid: 780221090726f6448b531c6bdbe13cf9,
+      type: 3}
+    RightPrefab: {fileID: -927199367670048503, guid: 1482df7cb0870aa4f84e917d2040a871,
+      type: 3}
+    LeftUiImage: {fileID: 21300000, guid: 778acc17f39c69747937425aa4fdcca5, type: 3}
+    RightUiImage: {fileID: 21300000, guid: 5a7bc98b788e9ed48a016ec87346dd75, type: 3}

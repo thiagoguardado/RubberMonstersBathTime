@@ -12,7 +12,9 @@ public class Mission
     int value;
     private bool isFullfilled;
 
-    public int Id { get => id;}
+    public int Id { get => id; }
+    public string leftPartID { get => ids[0]; }
+    public string rightPartID { get => ids[1]; }
 
     public Mission(int id, string id1, string id2, int value)
     {
@@ -67,6 +69,7 @@ public class MissionsController : MonoBehaviour
 
     private int currentLevel;
     private float lastTick;
+    private bool wasOnMaxMissions;
     private float levelsTimer = 0f;
     private float missionTimer = 0f;
     private int createdMissions { get { return fulfilledMissions.Count + activeMissions.Count; } }
@@ -80,13 +83,15 @@ public class MissionsController : MonoBehaviour
         toyController = FindObjectOfType<ToysController>();
 
         Events.Level.Start += StartMissions;
-        Events.Timer.Tick += Tick;
+        Events.Timer.TickOverall += Tick;
+        Events.Toys.Destroy += CheckMissionsFullfillment;
     }
 
     private void OnDestroy()
     {
         Events.Level.Start -= StartMissions;
-        Events.Timer.Tick -= Tick;
+        Events.Timer.TickOverall -= Tick;
+        Events.Toys.Destroy -= CheckMissionsFullfillment;
     }
 
     private void StartMissions()
@@ -159,10 +164,15 @@ public class MissionsController : MonoBehaviour
         if (activeMissions.Count >= maxActiveMissions)
         {
             Events.Missions.MaxMissionsReached.SafeInvoke();
+            wasOnMaxMissions = true;
         }
         else
         {
-            Events.Missions.MaxMissionsCleared.SafeInvoke();
+            if (wasOnMaxMissions)
+            {
+                Events.Missions.MaxMissionsCleared.SafeInvoke();
+                wasOnMaxMissions = false;
+            }
         }
     }
 
@@ -173,7 +183,7 @@ public class MissionsController : MonoBehaviour
             string id1 = ids[UnityEngine.Random.Range(0, ids.Length)];
             string id2 = ids[UnityEngine.Random.Range(0, ids.Length)];
 
-            CreateMission(id1,id2,value);
+            CreateMission(id1, id2, value);
         }
 
         void CreatePossible(List<string> activeToys)
@@ -202,9 +212,9 @@ public class MissionsController : MonoBehaviour
         {
             if (mission.CanBeFullfilled(spawnedToys))
             {
-                CreateRandom();
                 createdRandom = true;
-                break;
+                CreateRandom();
+                return;
             }
         }
 
@@ -212,6 +222,7 @@ public class MissionsController : MonoBehaviour
         if (!createdRandom && spawnedToys.Count > 0)
         {
             CreatePossible(spawnedToys);
+            return;
         }
 
         // fallback

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimerSystem : MonoBehaviour
 {
     private float timer = 0f;
+    private float timerTick = 0f;
     private bool isRunnning = false;
     private bool isPaused = false;
 
@@ -28,17 +29,19 @@ public class TimerSystem : MonoBehaviour
         if (isRunnning && !isPaused)
         {
             timer += Time.deltaTime;
+            timerTick = Time.deltaTime;
 
-            TickTimer();
+            TriggerTimers();
         }
     }
 
     public void StartTimer()
     {
         this.timer = 0f;
+        this.timerTick = 0f;
         this.isRunnning = true;
 
-        TickTimer();
+        TriggerTimers();
     }
 
     public void PauseTimer(bool isPaused)
@@ -64,8 +67,9 @@ public class TimerSystem : MonoBehaviour
         isRunnning = false;
     }
 
-    private void TickTimer()
+    private void TriggerTimers()
     {
-        Events.Timer.Tick.SafeInvoke(timer);
+        Events.Timer.TickOverall.SafeInvoke(timer);
+        Events.Timer.Tick.SafeInvoke(timerTick);
     }
 }
