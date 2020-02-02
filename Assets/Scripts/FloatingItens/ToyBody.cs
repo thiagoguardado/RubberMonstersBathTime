@@ -69,7 +69,6 @@ public class ToyBody : MonoBehaviour
             case 0:
                 Destroy(gameObject);
                 return;
-                break;
             case 1:
                 currentBodyConfiguration = singleBodyPosition;
                 singleBodyRoot.SetActive(true);

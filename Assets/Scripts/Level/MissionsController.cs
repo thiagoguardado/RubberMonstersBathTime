@@ -204,8 +204,8 @@ public class MissionsController : MonoBehaviour
         {
             if (mission.CanBeFullfilled(spawnedToys))
             {
-                CreateRandom();
                 createdRandom = true;
+                CreateRandom();
                 return;
             }
         }
@@ -214,6 +214,7 @@ public class MissionsController : MonoBehaviour
         if (!createdRandom && spawnedToys.Count > 0)
         {
             CreatePossible(spawnedToys);
+            return;
         }
 
         // fallback
