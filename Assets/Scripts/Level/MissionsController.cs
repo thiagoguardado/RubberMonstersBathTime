@@ -15,6 +15,7 @@ public class Mission
     public int Id { get => id; }
     public string leftPartID { get => ids[0]; }
     public string rightPartID { get => ids[1]; }
+    public int Value => value;
 
     public Mission(int id, string id1, string id2, int value)
     {
