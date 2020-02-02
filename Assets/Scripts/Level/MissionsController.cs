@@ -220,10 +220,9 @@ public class MissionsController : MonoBehaviour
         void CreatePossible(List<string> activeToys)
         {
             List<string> validIds = activeToys.Intersect(ids).ToList();
-            if (validIds.Count > 1)
+            if (validIds.Count > 0)
             {
                 string id1 = validIds[UnityEngine.Random.Range(0, validIds.Count)];
-                validIds.Remove(id1);
                 string id2 = validIds[UnityEngine.Random.Range(0, validIds.Count)];
 
                 CreateMission(id1, id2, value);

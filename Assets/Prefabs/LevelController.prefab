@@ -209,32 +209,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalConfigs: {fileID: 11400000, guid: d57e6e98002a57549a83d190c8069037, type: 2}
-  initialDelay: 1
+  initialDelay: 5
   maxActiveMissions: 3
   missionsTable:
   - duration: 20
     possibleIds: duck
     value: 100
     timeSpan: 7
-  - duration: 40
+  - duration: 30
     possibleIds: duck,spike
     value: 200
     timeSpan: 7
-  - duration: 60
+  - duration: 30
     possibleIds: duck,spike,robot
     value: 300
     timeSpan: 7
   - duration: 60
     possibleIds: duck,spike,robot,demon
-    value: 300
+    value: 400
     timeSpan: 7
   - duration: 60
     possibleIds: duck,spike,robot,demon
-    value: 300
+    value: 500
     timeSpan: 5
   - duration: 60
     possibleIds: duck,spike,robot,demon
-    value: 300
+    value: 600
     timeSpan: 3
 --- !u!114 &1748689044
 MonoBehaviour:
@@ -255,23 +255,27 @@ MonoBehaviour:
   initialDelay: 1
   retryDelay: 0.5
   toysTable:
-  - duration: 7
+  - duration: 15
     possibleIds: duck
     maxToys: 1
     timeSpan: 2
-  - duration: 13
+  - duration: 20
     possibleIds: duck
     maxToys: 2
     timeSpan: 2
-  - duration: 60
+  - duration: 30
     possibleIds: duck,spike
     maxToys: 2
     timeSpan: 2
-  - duration: 60
+  - duration: 30
     possibleIds: robot,spike,duck
+    maxToys: 3
+    timeSpan: 2
+  - duration: 60
+    possibleIds: robot,spike,duck,demon
     maxToys: 4
     timeSpan: 2
-  - duration: 120
+  - duration: 60
     possibleIds: robot,spike,duck,demon
     maxToys: 6
     timeSpan: 2
