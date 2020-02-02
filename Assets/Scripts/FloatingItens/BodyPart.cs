@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,5 +47,11 @@ public class BodyPart : MonoBehaviour
         }
 
         UpdatePosition(false);
+    }
+
+    public void DestroyThis()
+    {
+        ToyBodyFactory.Instance.BodyParts.Remove(this);
+        Destroy(gameObject);
     }
 }

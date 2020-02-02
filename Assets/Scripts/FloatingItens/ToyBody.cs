@@ -56,7 +56,7 @@ public class ToyBody : MonoBehaviour
     IEnumerator ProtectAgainstSpammingCR()
     {
         Protected = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.2f);
         Protected = false;
     }
 
@@ -144,13 +144,19 @@ public class ToyBody : MonoBehaviour
             return;
         }
         other.BodyParts.Add(BodyParts[0]);
+        BodyParts.Remove(BodyParts[0]);
         other.UpdateBodyPartPositions();
+
         DestroyThis();
     }
 
     public void DestroyThis()
     {
         ToyBodyFactory.Instance.ToyBodies.Remove(this);
+        foreach(BodyPart bodyPart in BodyParts)
+        {
+            bodyPart.DestroyThis();
+        }
         Destroy(gameObject);
     }
 

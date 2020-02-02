@@ -25,7 +25,6 @@ public class ToysController : MonoBehaviour
         }
         spawnCoroutine = StartCoroutine(SpawnCR());
     }
-
     public IEnumerator SpawnCR()
     {
         yield return new WaitForSeconds(1.0f);
@@ -46,6 +45,11 @@ public class ToysController : MonoBehaviour
         var configurations = ToyBodyFactory.Instance.Configuration.BodyPartConfigurations;
         int randomIdIndex = UnityEngine.Random.Range(0, configurations.Length);
         string randomId = configurations[randomIdIndex].id;
-        ToyBodyFactory.Instance.InstantiateBody(randomId, (EBodyPartSlot) randomSlot, "", EBodyPartSlot.LEFT, Vector3.zero, Quaternion.identity);
+        Vector3 position = Vector3.zero;
+        position.x += UnityEngine.Random.Range(-5.0f, 5.0f);
+        position.z += UnityEngine.Random.Range(-4.0f, 4.0f);
+        float angle = UnityEngine.Random.Range(0, 360);
+        Quaternion rotation = Quaternion.Euler(0, angle, 0);
+        ToyBodyFactory.Instance.InstantiateBody(randomId, (EBodyPartSlot) randomSlot, "", EBodyPartSlot.LEFT, position, rotation);
     }
 }

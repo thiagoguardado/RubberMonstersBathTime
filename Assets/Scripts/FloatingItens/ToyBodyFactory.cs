@@ -25,8 +25,8 @@ public class ToyBodyFactory : MonoBehaviour
     public string id2;
     public EBodyPartSlot slot2;
     public Rect SpawnArea;
+    public List<BodyPart> BodyParts = new List<BodyPart>();
 
-    private List<BodyPart> bodyParts = new List<BodyPart>();
     [ContextMenu("Create instance")]
     public void CreateInstance()
     {
@@ -91,7 +91,7 @@ public class ToyBodyFactory : MonoBehaviour
             emptyBodyPart.TargetSlot = (int) slot;
             emptyBodyPart.OriginalSlot = (int) slot;
             emptyBodyPart.Id = id;
-            bodyParts.Add(emptyBodyPart);
+            BodyParts.Add(emptyBodyPart);
             return emptyBodyPart;
         }
         return null;
@@ -129,7 +129,7 @@ public class ToyBodyFactory : MonoBehaviour
     internal List<string> GetActiveToyIds()
     {
         List<string> activeIds = new List<string>();
-        foreach(BodyPart part in bodyParts)
+        foreach(BodyPart part in BodyParts)
         {
             if(!activeIds.Contains(part.Id))
             {

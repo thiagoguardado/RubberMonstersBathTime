@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 810894402}
   - component: {fileID: 810894401}
   - component: {fileID: 8296143062491187097}
+  - component: {fileID: 899526737707032457}
+  - component: {fileID: 1693884306735688322}
   m_Layer: 8
   m_Name: EmptyBody
   m_TagString: FloatingItem
@@ -116,6 +118,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalConfigs: {fileID: 11400000, guid: d57e6e98002a57549a83d190c8069037, type: 2}
+--- !u!114 &899526737707032457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884584087827423073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75a567134d1db344a3aca4ba9e56340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: 2
+  turnRate: 4.5
+  maxAngle: 13
+  lerpFactor: 0.5
+--- !u!114 &1693884306735688322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884584087827423073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75a567134d1db344a3aca4ba9e56340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: 0
+  turnRate: 5
+  maxAngle: 13
+  lerpFactor: 0.5
 --- !u!1 &884584087837428467
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,8 +252,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884584087846345195}
-  - component: {fileID: 1857656485073953690}
-  - component: {fileID: 7857616457200878523}
   m_Layer: 8
   m_Name: template_double
   m_TagString: Untagged
@@ -243,38 +275,6 @@ Transform:
   m_Father: {fileID: 884584087827423074}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1857656485073953690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884584087846345194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75a567134d1db344a3aca4ba9e56340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axis: 2
-  turnRate: 4.5
-  maxAngle: 13
-  lerpFactor: 0.5
---- !u!114 &7857616457200878523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884584087846345194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75a567134d1db344a3aca4ba9e56340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axis: 0
-  turnRate: 5
-  maxAngle: 13
-  lerpFactor: 0.5
 --- !u!1 &884584088723357176
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,8 +470,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884584089812578987}
-  - component: {fileID: 8728220016505101755}
-  - component: {fileID: 2468198838411826161}
   m_Layer: 8
   m_Name: template_single
   m_TagString: Untagged
@@ -494,38 +492,6 @@ Transform:
   m_Father: {fileID: 884584087827423074}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8728220016505101755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884584089812578986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75a567134d1db344a3aca4ba9e56340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axis: 2
-  turnRate: 4.5
-  maxAngle: 13
-  lerpFactor: 0.5
---- !u!114 &2468198838411826161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884584089812578986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75a567134d1db344a3aca4ba9e56340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axis: 0
-  turnRate: 5
-  maxAngle: 13
-  lerpFactor: 0.5
 --- !u!1 &1065272452100788528
 GameObject:
   m_ObjectHideFlags: 0
