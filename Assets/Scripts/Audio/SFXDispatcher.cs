@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXDispatcher : MonoBehaviour
+public class 
+SFXDispatcher : MonoBehaviour
 {
     public string audioID;
     public bool privateAudioSource = false;
