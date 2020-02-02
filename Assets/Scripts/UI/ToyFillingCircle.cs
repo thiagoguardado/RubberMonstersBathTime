@@ -8,7 +8,6 @@ public class ToyFillingCircle : MonoBehaviour
     private ToyJoinReaction toyBodyReaction;
     public GameObject ringParent;
     public Image fillingRing;
-
     private float height;
 
     private void Awake()
@@ -31,6 +30,7 @@ public class ToyFillingCircle : MonoBehaviour
     private void LateUpdate()
     {
         transform.position = toyBodyReaction.transform.position + Vector3.up * height;
+        transform.rotation = Quaternion.identity;
     }
 
     private void UpdateFill(float fill)

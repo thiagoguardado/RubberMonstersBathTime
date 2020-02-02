@@ -52,9 +52,16 @@ public class ToyJoinReaction : MonoBehaviour
 
             if (timer >= globalConfigs.toyTimeAfterJoinBeforeScore)
             {
-                CompletedJoinedReaction.SafeInvoke();
+                CompleteJoin();
             }
         }
+    }
+
+    private void CompleteJoin()
+    {
+        toyBody.DestroyThis();
+
+        CompletedJoinedReaction.SafeInvoke();
     }
 
 }
