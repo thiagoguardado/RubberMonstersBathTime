@@ -33,6 +33,7 @@ public class ToysController : MonoBehaviour
 
     public List<string> ActiveToysIds { get { return ToyBodyFactory.Instance.GetActiveToyIds(); } }
 
+    
     public void Awake()
     {
         Events.Level.Start += StartToys;
@@ -47,12 +48,18 @@ public class ToysController : MonoBehaviour
         Events.Toys.Destroy -= OnToyDestroyed;
     }
 
-    private void StartToys()
+    private void Reset()
     {
+        toysInbath = 0;
         currentLevel = 0;
+        lastTick = 0;
         levelsTimer = -initialDelay;
         toySpawnTimer = -initialDelay;
-        lastTick = 0f;
+    }
+
+    private void StartToys()
+    {
+        Reset();
     }
 
     private void Tick(float tick)

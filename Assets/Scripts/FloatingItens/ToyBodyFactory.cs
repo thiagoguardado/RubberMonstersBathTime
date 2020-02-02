@@ -12,7 +12,7 @@ public enum EBodyPartSlot
 
 public class ToyBodyFactory : MonoBehaviour
 {
-    public List<ToyBody> ToyBodies;
+    public List<ToyBody> ToyBodies = new List<ToyBody>();
     public static ToyBodyFactory Instance;
 
     public ToyBodyConfiguration Configuration;
@@ -38,6 +38,17 @@ public class ToyBodyFactory : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        Reset();
+        Events.Level.Finish += OnLevelFinish;
+    }
+
+    private void OnLevelFinish()
+    {
+        Reset();
     }
 
     public void Update()
@@ -149,5 +160,20 @@ public class ToyBodyFactory : MonoBehaviour
             }
         }
         return activeIds;
+    }
+
+    public void Reset()
+    {
+        for(int i = ToyBodies.Count -1; i >= 0; i--)
+        {
+            if(ToyBodies[i] == null)
+            {
+                continue;
+            }
+            ToyBodies[i].DestroyThis();
+        }
+
+        ToyBodies.Clear();
+        BodyParts.Clear();
     }
 }

@@ -103,9 +103,10 @@ public class MissionsUI : MonoBehaviour
 
     private void OpenPanel()
     {
+        RefreshSlots();
         animator.SetBool("inGame", true);
+        animator.SetBool("inDanger", false);
     }
-
 
     private void StopShake()
     {
