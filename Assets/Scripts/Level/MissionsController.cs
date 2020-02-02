@@ -102,18 +102,26 @@ public class MissionsController : MonoBehaviour
     private void StartMissions()
     {
         isActive = true;
-        currentLevel = 0;
         levelsTimer = -initialDelay;
         missionTimer = -initialDelay;
-        lastTick = 0f;
+        
+        Reset();
     }
 
 
     private void FinishMissions()
     {
         isActive = false;
+        Reset();
     }
 
+    private void Reset()
+    {
+        currentLevel = 0;
+        lastTick = 0f;
+        activeMissions.Clear();
+        fulfilledMissions.Clear();
+    }
 
     private void Tick(float tick)
     {
