@@ -105,7 +105,7 @@ public class ToysController : MonoBehaviour
 
     private bool TrySpawnPair()
     {
-        if (toysTable[currentLevel].maxToys > toysInbath)
+        if (toysTable[currentLevel].maxToys * 2 > ToyBodyFactory.Instance.ToyBodies.Count)
         {
             toySpawnTimer = 0f;
             string[] ids = toysTable[currentLevel].possibleIds.Split(',');

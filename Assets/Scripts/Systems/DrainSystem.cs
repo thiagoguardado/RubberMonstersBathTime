@@ -15,6 +15,7 @@ public class DrainSystem : MonoBehaviour
     private void Awake()
     {
         Events.Level.Start += UnpauseDrain;
+        Events.Level.Start += Reset;
         Events.Level.Pause += PauseDrain;
         Events.Level.Unpause += UnpauseDrain;
 
