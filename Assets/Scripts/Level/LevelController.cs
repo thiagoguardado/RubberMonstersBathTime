@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour
 {
     private void Start()
     {
-        StartLevel();
+        // StartLevel();
     }
 
     private void Awake()
