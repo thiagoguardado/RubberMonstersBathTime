@@ -212,30 +212,30 @@ MonoBehaviour:
   initialDelay: 5
   maxActiveMissions: 3
   missionsTable:
-  - duration: 20
+  - duration: 25
     possibleIds: duck
     value: 100
     timeSpan: 7
-  - duration: 30
+  - duration: 25
     possibleIds: duck,spike
     value: 200
-    timeSpan: 7
-  - duration: 30
+    timeSpan: 6
+  - duration: 25
     possibleIds: duck,spike,robot
     value: 300
-    timeSpan: 7
-  - duration: 60
+    timeSpan: 5
+  - duration: 30
     possibleIds: duck,spike,robot,demon
     value: 400
-    timeSpan: 7
-  - duration: 60
+    timeSpan: 5
+  - duration: 30
     possibleIds: duck,spike,robot,demon
     value: 500
-    timeSpan: 5
+    timeSpan: 4
   - duration: 60
     possibleIds: duck,spike,robot,demon
     value: 600
-    timeSpan: 3
+    timeSpan: 2
 --- !u!114 &1748689044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,25 +255,25 @@ MonoBehaviour:
   initialDelay: 1
   retryDelay: 0.5
   toysTable:
-  - duration: 15
+  - duration: 8
     possibleIds: duck
     maxToys: 1
     timeSpan: 2
-  - duration: 20
+  - duration: 15
     possibleIds: duck
     maxToys: 2
     timeSpan: 2
-  - duration: 30
+  - duration: 25
     possibleIds: duck,spike
-    maxToys: 2
-    timeSpan: 2
-  - duration: 30
-    possibleIds: robot,spike,duck
     maxToys: 3
     timeSpan: 2
-  - duration: 60
-    possibleIds: robot,spike,duck,demon
+  - duration: 25
+    possibleIds: robot,spike,duck
     maxToys: 4
+    timeSpan: 2
+  - duration: 30
+    possibleIds: robot,spike,duck,demon
+    maxToys: 5
     timeSpan: 2
   - duration: 60
     possibleIds: robot,spike,duck,demon
