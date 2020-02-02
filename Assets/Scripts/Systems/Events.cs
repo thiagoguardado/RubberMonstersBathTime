@@ -13,6 +13,8 @@ public static class Events
 
     public static class Timer
     {
+        public static Action<float> TickOverall;
+
         public static Action<float> Tick;
     }
 

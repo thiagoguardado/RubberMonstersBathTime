@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class AudioUnit
 {
     public string id;
-    public AudioClip audioClip;
+    public List<AudioClip> audioClips;
 }
 
 public class AudioController : MonoBehaviour
@@ -29,7 +29,7 @@ public class AudioController : MonoBehaviour
         {
             if (item.id == audioID)
             {
-                sfx.PlayOneShot(item.audioClip);
+                sfx.PlayOneShot(GetAudioClipFromList(item));
             }
         }
     }
@@ -40,7 +40,7 @@ public class AudioController : MonoBehaviour
         {
             if (item.id == audioID)
             {
-                audioSource.PlayOneShot(item.audioClip);
+                audioSource.PlayOneShot(GetAudioClipFromList(item));
             }
         }
     }
@@ -54,9 +54,14 @@ public class AudioController : MonoBehaviour
             if (item.id == audioID)
             {
                 audioSource.loop = true;
-                audioSource.clip = item.audioClip;
+                audioSource.clip = GetAudioClipFromList(item);
                 audioSource.Play();
             }
         }
+    }
+
+    private AudioClip GetAudioClipFromList(AudioUnit unit)
+    {
+        return unit.audioClips[UnityEngine.Random.Range(0,unit.audioClips.Count)];
     }
 }

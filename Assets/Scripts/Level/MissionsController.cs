@@ -82,13 +82,13 @@ public class MissionsController : MonoBehaviour
         toyController = FindObjectOfType<ToysController>();
 
         Events.Level.Start += StartMissions;
-        Events.Timer.Tick += Tick;
+        Events.Timer.TickOverall += Tick;
     }
 
     private void OnDestroy()
     {
         Events.Level.Start -= StartMissions;
-        Events.Timer.Tick -= Tick;
+        Events.Timer.TickOverall -= Tick;
     }
 
     private void StartMissions()
