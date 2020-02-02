@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb6db0a08bbabf43b6894e640a5719e, type: 3}
   m_Name: Global Config
   m_EditorClassIdentifier: 
-  toyTimeAfterJoinBeforeScore: 5
+  toyTimeAfterJoinBeforeScore: 2

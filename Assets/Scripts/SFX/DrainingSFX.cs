@@ -10,7 +10,7 @@ public class DrainingSFX : MonoBehaviour
     private void Awake()
     {
         Events.Drain.Start += drainingDispatcher.StartPlaySFX;
-        Events.Drain.Finish += drainingDispatcher.StopPlaySFX;
+        Events.Drain.Stop += drainingDispatcher.StopPlaySFX;
 
         Events.Drain.Finish += finishedDrainingDispatcher.PlaySfxOnce;
     }
@@ -18,7 +18,7 @@ public class DrainingSFX : MonoBehaviour
     private void OnDestroy()
     {
         Events.Drain.Start -= drainingDispatcher.StartPlaySFX;
-        Events.Drain.Finish -= drainingDispatcher.StopPlaySFX;
+        Events.Drain.Stop -= drainingDispatcher.StopPlaySFX;
 
         Events.Drain.Finish -= finishedDrainingDispatcher.PlaySfxOnce;
     }

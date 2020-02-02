@@ -9,7 +9,7 @@ public class ToyBody : MonoBehaviour
 
     public bool Protected = true;
 
-    public int InstanceId{get; private set;}
+    public int InstanceId { get; private set; }
 
     public int Id { get; private set; }
     public GameObject singleBodyRoot;
@@ -152,11 +152,19 @@ public class ToyBody : MonoBehaviour
     public void DestroyThis()
     {
         ToyBodyFactory.Instance.ToyBodies.Remove(this);
-        foreach(BodyPart bodyPart in BodyParts)
+        string[] ids = new string[2];
+        for (int i = 0; i < BodyParts.Count; i++)
+        {
+            BodyParts[i].DestroyThis();
+            ids[i] = BodyParts[i].Id;
+        }
+        foreach (BodyPart bodyPart in BodyParts)
         {
             bodyPart.DestroyThis();
         }
         Destroy(gameObject);
+
+        Events.Toys.Destroy.SafeInvoke(ids[0], ids[1]);
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -164,9 +172,9 @@ public class ToyBody : MonoBehaviour
         if (Protected) return;
         ToyBody other = collision.gameObject.GetComponent<ToyBody>();
 
-        if(other == null) return;
-        if(other.InstanceId < InstanceId) return;
-        if(other.Protected) return;
+        if (other == null) return;
+        if (other.InstanceId < InstanceId) return;
+        if (other.Protected) return;
 
         if (this.BodyParts.Count == 1 && other.BodyParts.Count == 1)
         {

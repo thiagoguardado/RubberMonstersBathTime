@@ -29,7 +29,7 @@ public class ToysController : MonoBehaviour
     private float levelsTimer = 0f;
     private float toySpawnTimer = 0f;
 
-    public event Action<string,string> ToyRemoved;
+    public event Action<string, string> ToyRemoved;
 
     public List<string> ActiveToysIds { get { return ToyBodyFactory.Instance.GetActiveToyIds(); } }
 
@@ -37,12 +37,14 @@ public class ToysController : MonoBehaviour
     {
         Events.Level.Start += StartToys;
         Events.Timer.Tick += Tick;
+        Events.Toys.Destroy += OnToyDestroyed;
     }
 
     private void OnDestroy()
     {
         Events.Level.Start -= StartToys;
         Events.Timer.Tick -= Tick;
+        Events.Toys.Destroy -= OnToyDestroyed;
     }
 
     private void StartToys()
@@ -123,5 +125,10 @@ public class ToysController : MonoBehaviour
         }
 
         toysInbath++;
+    }
+
+    private void OnToyDestroyed(string id1, string id2)
+    {
+        toysInbath--;
     }
 }

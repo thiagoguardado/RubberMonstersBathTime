@@ -83,12 +83,14 @@ public class MissionsController : MonoBehaviour
 
         Events.Level.Start += StartMissions;
         Events.Timer.TickOverall += Tick;
+        Events.Toys.Destroy += CheckMissionsFullfillment;
     }
 
     private void OnDestroy()
     {
         Events.Level.Start -= StartMissions;
         Events.Timer.TickOverall -= Tick;
+        Events.Toys.Destroy -= CheckMissionsFullfillment;
     }
 
     private void StartMissions()

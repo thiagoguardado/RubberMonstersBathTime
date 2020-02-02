@@ -44,6 +44,7 @@ public class DrainSystem : MonoBehaviour
 
     private void StopDrain()
     {
+        Events.Drain.Stop.SafeInvoke();
         isDraining = false;
     }
 
@@ -83,7 +84,7 @@ public class DrainSystem : MonoBehaviour
 
     private void FinishDrain()
     {
-        isDraining = false;
+        StopDrain();
         Events.Drain.Finish.SafeInvoke();
     }
 }
