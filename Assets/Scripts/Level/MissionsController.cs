@@ -69,6 +69,7 @@ public class MissionsController : MonoBehaviour
 
     private int currentLevel;
     private float lastTick;
+    private bool wasOnMaxMissions;
     private float levelsTimer = 0f;
     private float missionTimer = 0f;
     private int createdMissions { get { return fulfilledMissions.Count + activeMissions.Count; } }
@@ -163,10 +164,15 @@ public class MissionsController : MonoBehaviour
         if (activeMissions.Count >= maxActiveMissions)
         {
             Events.Missions.MaxMissionsReached.SafeInvoke();
+            wasOnMaxMissions = true;
         }
         else
         {
-            Events.Missions.MaxMissionsCleared.SafeInvoke();
+            if (wasOnMaxMissions)
+            {
+                Events.Missions.MaxMissionsCleared.SafeInvoke();
+                wasOnMaxMissions = false;
+            }
         }
     }
 
