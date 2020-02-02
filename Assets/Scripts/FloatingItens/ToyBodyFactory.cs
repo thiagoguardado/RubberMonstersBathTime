@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,16 +8,6 @@ public enum EBodyPartSlot
 {
     LEFT,
     RIGHT
-}
-
-[System.Serializable]
-public class BodyPartConfiguration
-{
-    public List<ToyBody> ToyBodies;
-    public string id;
-    public string ToyId;
-    public GameObject Prefab;
-    public EBodyPartSlot TargetSlot;
 }
 public class ToyBodyFactory : MonoBehaviour
 {
@@ -29,13 +20,16 @@ public class ToyBodyFactory : MonoBehaviour
 
     [Header("Create instance debug")]
     public string id1;
+    public EBodyPartSlot slot1;
     public string id2;
+    public EBodyPartSlot slot2;
     public Rect SpawnArea;
 
+    private List<BodyPart> bodyParts = new List<BodyPart>();
     [ContextMenu("Create instance")]
     public void CreateInstance()
     {
-        InstantiateBody(id1, id2, transform.position, transform.rotation);
+        InstantiateBody(id1, slot1, id2, slot2, transform.position, transform.rotation);
     }
 
     private void Awake()
@@ -60,7 +54,7 @@ public class ToyBodyFactory : MonoBehaviour
         }
     }
     
-    private BodyPart InstantiatePart(string id)
+    private BodyPart InstantiatePart(string id, EBodyPartSlot slot)
     {
         var partConfigurations = Configuration.BodyPartConfigurations;
         foreach(var partConfiguration in partConfigurations)
@@ -70,27 +64,46 @@ public class ToyBodyFactory : MonoBehaviour
                 continue;
             }
 
-            var prefab = (partConfiguration.TargetSlot == EBodyPartSlot.LEFT) ? Configuration.PartPrefabLeft : Configuration.PartPrefabRight;
-            BodyPart emptyBodyPart = Instantiate<BodyPart>(prefab);
-            GameObject bodyGraphics = Instantiate(partConfiguration.Prefab, emptyBodyPart.ModelContainer.transform);
+            BodyPart emptyPrefab;
+            GameObject graphicsPrefab;
+
+            switch(slot)
+            {
+                case EBodyPartSlot.LEFT:
+                    emptyPrefab = Configuration.PartPrefabLeft;
+                    graphicsPrefab = partConfiguration.LeftPrefab;
+                    break;
+                case EBodyPartSlot.RIGHT:
+                    emptyPrefab = Configuration.PartPrefabRight;
+                    graphicsPrefab = partConfiguration.RightPrefab;
+                    break;
+                default:
+                    emptyPrefab = null;
+                    graphicsPrefab = null;
+                    break;
+            }
+            BodyPart emptyBodyPart = Instantiate<BodyPart>(emptyPrefab);
+            GameObject bodyGraphics = Instantiate(graphicsPrefab, emptyBodyPart.ModelContainer.transform);
             bodyGraphics.transform.localPosition = Vector3.zero;
             bodyGraphics.transform.localScale = Vector3.one;
             bodyGraphics.transform.localRotation = Quaternion.identity;
-            emptyBodyPart.TargetSlot = (int) partConfiguration.TargetSlot;
-            emptyBodyPart.OriginalSlot = (int) partConfiguration.TargetSlot;
+            emptyBodyPart.TargetSlot = (int) slot;
+            emptyBodyPart.OriginalSlot = (int) slot;
+            emptyBodyPart.Id = id;
+            bodyParts.Add(emptyBodyPart);
             return emptyBodyPart;
         }
         return null;
     }
 
-    public ToyBody InstantiateBody(string bodyPart1, string bodyPart2, Vector3 position, Quaternion rotation)
+    public ToyBody InstantiateBody(string bodyPart1, EBodyPartSlot slot1, string bodyPart2, EBodyPartSlot slot2, Vector3 position, Quaternion rotation)
     {
-        var part1 = InstantiatePart(bodyPart1);
-        var part2 = InstantiatePart(bodyPart2);
+        var part1 = InstantiatePart(bodyPart1, slot1);
+        var part2 = InstantiatePart(bodyPart2, slot2);
         var body = InstantiateBody(part1, part2, position, rotation);
         body.UpdateBodyPartPositions(); 
-        part1.UpdateImmediately();
-        part2.UpdateImmediately();
+        part1?.UpdateImmediately();
+        part2?.UpdateImmediately();
         return body;
     }
 
@@ -102,15 +115,26 @@ public class ToyBodyFactory : MonoBehaviour
         if(bodyPart1 != null)
         {
             toyBody.BodyParts.Add(bodyPart1);
-            //bodyPart1.transform.parent = toyBody.transform;
         }
         if(bodyPart2 != null)
         {
             toyBody.BodyParts.Add(bodyPart2);
-           // bodyPart2.transform.parent = toyBody.transform;
         }
     
         ToyBodies.Add(toyBody);
         return toyBody;
+    }
+
+    internal List<string> GetActiveToyIds()
+    {
+        List<string> activeIds = new List<string>();
+        foreach(BodyPart part in bodyParts)
+        {
+            if(!activeIds.Contains(part.Id))
+            {
+                activeIds.Add(part.Id);
+            }
+        }
+        return activeIds;
     }
 }
