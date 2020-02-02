@@ -5,6 +5,7 @@ using UnityEngine;
 public class EndGameUI : MonoBehaviour
 {
     public GameObject[] statePanels;
+
     private void Start()
     {
         Reset();
