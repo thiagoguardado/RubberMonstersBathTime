@@ -13,6 +13,7 @@ public static class Events
         public static Action Finish;
         public static Action Pause;
         public static Action Unpause;
+        public static Action ShowTitle;
     }
 
     public static class Timer

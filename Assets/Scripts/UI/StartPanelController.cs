@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +12,23 @@ public class StartPanelController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         sFXDispatcher = GetComponent<SFXDispatcher>();
+
+        Events.Level.ShowTitle += OpenPanel;
+    }
+
+    void OnDestroy()
+    {
+        Events.Level.ShowTitle -= OpenPanel;
+    }
+
+    private void OpenPanel()
+    {
+        animator.SetBool("opened", true);
     }
 
     public void StartGame()
     {
-        animator.SetTrigger("start");
+        animator.SetBool("opened", false);
 
         sFXDispatcher.PlaySfxOnce();
 
