@@ -24,6 +24,11 @@ public class BodyPart : MonoBehaviour
     {
         float lerpValue = immediately ? 1 : 7 * Time.deltaTime;
         transform.position = Vector3.Lerp(transform.position, TargetPosition.position, lerpValue);
+        if(!immediately && Vector3.Distance(transform.position, TargetPosition.position) < 0.004f)
+        {
+            transform.position = TargetPosition.position;
+        }
+
         Quaternion targetRotation = TargetPosition.rotation;
         var scale = transform.localScale;
         if(OriginalSlot != TargetSlot)
@@ -36,10 +41,16 @@ public class BodyPart : MonoBehaviour
             scale.y = Mathf.Abs(scale.y);
         }
         transform.localScale = scale;
-        transform.localRotation = Quaternion.Lerp(transform.rotation, targetRotation, lerpValue);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, lerpValue);
+        float angleDistance = Vector3.Distance(transform.rotation.eulerAngles, targetRotation.eulerAngles);
+
+        if(angleDistance < 6)
+        {
+            transform.rotation = targetRotation;
+        }
     }
 
-    public void Update()
+    public void LateUpdate()
     {
         if(!enabled || TargetPosition == null)
         {

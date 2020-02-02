@@ -37,7 +37,6 @@ public class ScoreSystem : MonoBehaviour
             return;
         }
 
-        Debug.Log($"mission completed {obj.Value}");
         MissionsCompleted++;
         CurrentScore += obj.Value;
         if(CurrentScore > BestScore)
