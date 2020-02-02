@@ -17,6 +17,7 @@ public class BodyPartConfiguration
     public string ToyId;
     public GameObject Prefab;
     public EBodyPartSlot TargetSlot;
+    public Sprite uiImage;
 }
 public class ToyBodyFactory : MonoBehaviour
 {

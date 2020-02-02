@@ -73,9 +73,11 @@ public class DrainSystem : MonoBehaviour
             timer += Time.deltaTime;
 
             Events.Drain.Tick.SafeInvoke(drainLevel);
+
+            if (drainLevel <= 0) FinishDrain();
         }
 
-        if (drainLevel <= 0) FinishDrain();
+        
     }
 
     private void FinishDrain()
