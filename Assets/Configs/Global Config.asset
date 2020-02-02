@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Global Config
   m_EditorClassIdentifier: 
   toyTimeAfterJoinBeforeScore: 2
+  autoCreateMissionDelay: 0.5
+  drainTime: 10
