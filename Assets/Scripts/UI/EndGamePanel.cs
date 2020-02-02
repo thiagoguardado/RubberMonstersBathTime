@@ -14,8 +14,18 @@ public class EndGamePanel : MonoBehaviour
     private int score;
     private string bathTime;
     private int missions;
-    private int bestScore; 
-    public void OnEnable()
+    private int bestScore;
+
+    private void Awake()
+    {
+        Events.Level.Finish += UpdateInfo;
+    }
+    private void OnDestroy(){
+
+        Events.Level.Finish -= UpdateInfo;
+    }
+
+    private void UpdateInfo()
     {
         score = ScoreSystem.Instance.CurrentScore;
         bestScore = ScoreSystem.Instance.BestScore;
@@ -33,9 +43,4 @@ public class EndGamePanel : MonoBehaviour
         BathTime.text = $"{bathTime}";
     }
 
-    public void Replay()
-    {
-        gameObject.SetActive(false);
-        Events.Level.Start.SafeInvoke();
-    }
 }
