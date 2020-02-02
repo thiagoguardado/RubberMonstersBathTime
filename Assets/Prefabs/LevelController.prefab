@@ -88,15 +88,15 @@ MonoBehaviour:
   maxActiveMissions: 3
   missionsTable:
   - duration: 10
-    possibleIds: id1
+    possibleIds: robot
     value: 100
     timeSpan: 5
   - duration: 20
-    possibleIds: id1,id2
+    possibleIds: robot,demon
     value: 200
     timeSpan: 3
   - duration: 20
-    possibleIds: id1,id2,id3
+    possibleIds: robot,demon
     value: 300
     timeSpan: 2
 --- !u!114 &1748689044

@@ -12,7 +12,9 @@ public class Mission
     int value;
     private bool isFullfilled;
 
-    public int Id { get => id;}
+    public int Id { get => id; }
+    public string leftPartID { get => ids[0]; }
+    public string rightPartID { get => ids[1]; }
 
     public Mission(int id, string id1, string id2, int value)
     {
@@ -173,7 +175,7 @@ public class MissionsController : MonoBehaviour
             string id1 = ids[UnityEngine.Random.Range(0, ids.Length)];
             string id2 = ids[UnityEngine.Random.Range(0, ids.Length)];
 
-            CreateMission(id1,id2,value);
+            CreateMission(id1, id2, value);
         }
 
         void CreatePossible(List<string> activeToys)

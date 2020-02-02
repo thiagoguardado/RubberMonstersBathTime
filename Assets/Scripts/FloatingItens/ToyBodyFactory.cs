@@ -9,6 +9,7 @@ public enum EBodyPartSlot
     LEFT,
     RIGHT
 }
+
 public class ToyBodyFactory : MonoBehaviour
 {
     public List<ToyBody> ToyBodies;
