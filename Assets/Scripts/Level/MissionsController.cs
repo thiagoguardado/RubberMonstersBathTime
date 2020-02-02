@@ -69,6 +69,7 @@ public class MissionsController : MonoBehaviour
     private List<Mission> activeMissions = new List<Mission>();
     private List<Mission> fulfilledMissions = new List<Mission>();
 
+    private bool isActive;
     private int currentLevel;
     private float lastTick;
     private bool wasOnMaxMissions;
@@ -85,6 +86,7 @@ public class MissionsController : MonoBehaviour
         toyController = FindObjectOfType<ToysController>();
 
         Events.Level.Start += StartMissions;
+        Events.Level.Finish += FinishMissions;
         Events.Timer.TickOverall += Tick;
         Events.Toys.Destroy += CheckMissionsFullfillment;
     }
@@ -92,17 +94,26 @@ public class MissionsController : MonoBehaviour
     private void OnDestroy()
     {
         Events.Level.Start -= StartMissions;
+        Events.Level.Finish -= FinishMissions;
         Events.Timer.TickOverall -= Tick;
         Events.Toys.Destroy -= CheckMissionsFullfillment;
     }
 
     private void StartMissions()
     {
+        isActive = true;
         currentLevel = 0;
         levelsTimer = -initialDelay;
         missionTimer = -initialDelay;
         lastTick = 0f;
     }
+
+
+    private void FinishMissions()
+    {
+        isActive = false;
+    }
+
 
     private void Tick(float tick)
     {
@@ -145,6 +156,9 @@ public class MissionsController : MonoBehaviour
 
     public void CheckMissionsFullfillment(string id1, string id2)
     {
+
+        if (!isActive) return;
+
         for (int i = 0; i < activeMissions.Count; i++)
         {
             Mission mission = activeMissions[i];
