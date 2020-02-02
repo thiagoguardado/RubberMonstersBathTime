@@ -85,6 +85,9 @@ GameObject:
   - component: {fileID: 827985135}
   - component: {fileID: 827985137}
   - component: {fileID: 827985136}
+  - component: {fileID: 827985138}
+  - component: {fileID: 827985139}
+  - component: {fileID: 827985140}
   m_Layer: 5
   m_Name: Mission
   m_TagString: Untagged
@@ -138,6 +141,48 @@ MonoBehaviour:
   - {fileID: 5621987449529601412}
   toyBodyConfiguration: {fileID: 11400000, guid: e19226cd4b08c264a8ba2d7ac43d1d5d,
     type: 2}
+--- !u!114 &827985138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827985134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1871d76541d2d44198edf2105edff97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newCardDispatcher: {fileID: 827985140}
+  cardCompletedDispatcher: {fileID: 827985139}
+--- !u!114 &827985139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827985134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d982713cb99a60a469337284e172da7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioID: cartaCompleta
+  privateAudioSource: 0
+--- !u!114 &827985140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827985134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d982713cb99a60a469337284e172da7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioID: novaCarta
+  privateAudioSource: 0
 --- !u!1 &1265048069
 GameObject:
   m_ObjectHideFlags: 0

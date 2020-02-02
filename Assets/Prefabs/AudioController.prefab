@@ -42,7 +42,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -169,7 +169,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -301,3 +301,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm: {fileID: 3587810847307851626}
   sfx: {fileID: 11812795}
+  audiosList:
+  - id: colando
+    audioClip: {fileID: 8300000, guid: 8d195efd10fea9d4f9846b829216b1d7, type: 3}
+  - id: separando
+    audioClip: {fileID: 8300000, guid: 75e14282d18aed649b9733f000be3af2, type: 3}
+  - id: novaCarta
+    audioClip: {fileID: 8300000, guid: f91dea9f7faa7ce44818eb7b067d0641, type: 3}
+  - id: cartaCompleta
+    audioClip: {fileID: 8300000, guid: c8c9cec184ea179458850fdadc3d9cf9, type: 3}
+  - id: vortex
+    audioClip: {fileID: 8300000, guid: 1dac3866c7998724e9dc66406b4eee09, type: 3}
+  - id: drenando
+    audioClip: {fileID: 8300000, guid: cb46d64cee96e5d4caac7c5412517d31, type: 3}
+  - id: esvazia
+    audioClip: {fileID: 8300000, guid: cb46d64cee96e5d4caac7c5412517d31, type: 3}

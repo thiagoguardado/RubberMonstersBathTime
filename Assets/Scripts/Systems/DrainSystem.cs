@@ -38,6 +38,7 @@ public class DrainSystem : MonoBehaviour
 
     private void StartDrain()
     {
+        Events.Drain.Start.SafeInvoke();
         isDraining = true;
     }
 

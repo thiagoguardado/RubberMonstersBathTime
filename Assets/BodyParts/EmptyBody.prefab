@@ -528,7 +528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.01}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4887014066452779965
@@ -602,8 +602,11 @@ GameObject:
   - component: {fileID: 4912386471198306578}
   - component: {fileID: 76587171605378305}
   - component: {fileID: 6313586698083915354}
+  - component: {fileID: 7527273488585342262}
+  - component: {fileID: 1189914021548531960}
+  - component: {fileID: 6401999515308125185}
   m_Layer: 0
-  m_Name: VFX
+  m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,7 +620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3303405035732382754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4131546090502456922}
@@ -654,6 +657,48 @@ MonoBehaviour:
     type: 3}
   completedJoinParticles: {fileID: 5105254655644516069, guid: c761b780173b15247984f05ca0ec12ee,
     type: 3}
+--- !u!114 &7527273488585342262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303405035732382754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaacaa07145026d479fb6dce829c5fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joinDispatcher: {fileID: 1189914021548531960}
+  breakDispatcher: {fileID: 6401999515308125185}
+--- !u!114 &1189914021548531960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303405035732382754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d982713cb99a60a469337284e172da7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioID: colando
+  privateAudioSource: 0
+--- !u!114 &6401999515308125185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303405035732382754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d982713cb99a60a469337284e172da7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioID: separando
+  privateAudioSource: 0
 --- !u!1 &4683104810288290130
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 8c8df6ad5ed82f446afac358801e252c, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -830,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 8c8df6ad5ed82f446afac358801e252c, type: 2}
   m_Color: {r: 0.21658385, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:

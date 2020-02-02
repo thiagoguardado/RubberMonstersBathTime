@@ -41,6 +41,8 @@ public class VortexController : MonoBehaviour
         {
             vortex.StartVortex(hit.point, vortexRadialIntensity, vortexTangencialIntensity);
         }
+
+        Events.Vortex.Start.SafeInvoke();
     }
 
     private void MoveVortex(Vector2 screenPosition)
@@ -60,6 +62,8 @@ public class VortexController : MonoBehaviour
     private void StopVortex(Vector2 screenPosition)
     {
         vortex.StopVortex();
+
+        Events.Vortex.Stop.SafeInvoke();
     }
 
 }

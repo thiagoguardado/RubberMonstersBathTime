@@ -18,6 +18,7 @@ public static class Events
 
     public static class Drain
     {
+        public static Action Start;
         public static Action<float> Tick;
         public static Action Finish;
     }
@@ -28,5 +29,11 @@ public static class Events
         public static Action<Mission> NewMission;
         public static Action MaxMissionsReached;
         public static Action MaxMissionsCleared;
+    }
+
+    public static class Vortex
+    {
+        public static Action Start;
+        public static Action Stop;
     }
 }

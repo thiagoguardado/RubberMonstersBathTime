@@ -35,7 +35,7 @@ public class ForceField : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(color.r,color.g,color.b,0.5f);
         Gizmos.DrawCube(transform.position, transform.localScale);
