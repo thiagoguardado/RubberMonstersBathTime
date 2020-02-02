@@ -83,7 +83,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec10cb537fd25294e8f2bc29105fa97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxParticles: {fileID: 0}
+  vfxParticles: {fileID: 8923764599790946198, guid: 8dad35a0b6e87a242b289380021ef1fc,
+    type: 3}
 --- !u!114 &7562705877040799758
 MonoBehaviour:
   m_ObjectHideFlags: 0

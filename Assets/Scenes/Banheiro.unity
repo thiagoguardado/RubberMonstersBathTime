@@ -128,16 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1474753576580527696, guid: 711cb4f16f5ef06468458ee81c6fe24b,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474753576580527696, guid: 711cb4f16f5ef06468458ee81c6fe24b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3785915670745728394, guid: 711cb4f16f5ef06468458ee81c6fe24b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -247,11 +237,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4399310465362298155, guid: 711cb4f16f5ef06468458ee81c6fe24b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711cb4f16f5ef06468458ee81c6fe24b, type: 3}
@@ -472,22 +457,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 295946784, guid: c2abee0bc714efd46b5aa8e5a3c25a08, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 295946784, guid: c2abee0bc714efd46b5aa8e5a3c25a08, type: 3}
-      propertyPath: m_Color.g
-      value: 0.03779804
-      objectReference: {fileID: 0}
-    - target: {fileID: 295946784, guid: c2abee0bc714efd46b5aa8e5a3c25a08, type: 3}
-      propertyPath: m_Color.b
-      value: 0.7264151
-      objectReference: {fileID: 0}
-    - target: {fileID: 295946784, guid: c2abee0bc714efd46b5aa8e5a3c25a08, type: 3}
-      propertyPath: m_Color.a
-      value: 0.34117648
-      objectReference: {fileID: 0}
     - target: {fileID: 1543625571395699750, guid: c2abee0bc714efd46b5aa8e5a3c25a08,
         type: 3}
       propertyPath: m_Name
@@ -904,11 +873,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToyBodyFactory
       objectReference: {fileID: 0}
-    - target: {fileID: 7562705877040799759, guid: dc3d1a4265942c948b2b836a30d8f268,
-        type: 3}
-      propertyPath: vfxParticles
-      value: 
-      objectReference: {fileID: 8923764599790946198, guid: 8dad35a0b6e87a242b289380021ef1fc,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3d1a4265942c948b2b836a30d8f268, type: 3}

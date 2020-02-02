@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MissionsUI : MonoBehaviour
 {
+    private Animator animator;
     private MissionsController missionsController;
     public List<MissionSlotUI> slots;
     public ToyBodyConfiguration toyBodyConfiguration;
@@ -12,15 +13,25 @@ public class MissionsUI : MonoBehaviour
     private void Awake()
     {
         missionsController = FindObjectOfType<MissionsController>();
+        animator = GetComponent<Animator>();
 
         Events.Missions.NewMission += AddMission;
         Events.Missions.FulfillMission += EliminateMission;
+
+        Events.Level.Start += OpenPanel;
+        Events.Level.Finish += ClosePanel;
+
+        Events.Drain.Start += ShakePanel;
+        Events.Drain.Stop += StopShake;
     }
 
-    private void OnDestroy() 
+    private void OnDestroy()
     {
         Events.Missions.NewMission -= AddMission;
         Events.Missions.FulfillMission -= EliminateMission;
+
+        Events.Level.Start -= OpenPanel;
+        Events.Level.Finish -= ClosePanel;
     }
 
     private void Start()
@@ -61,16 +72,38 @@ public class MissionsUI : MonoBehaviour
         {
             if (bodyPart.id == id)
             {
-                switch(part)
+                switch (part)
                 {
-                    case EBodyPartSlot.LEFT: 
+                    case EBodyPartSlot.LEFT:
                         return bodyPart.LeftUiImage;
-                    case EBodyPartSlot.RIGHT: 
+                    case EBodyPartSlot.RIGHT:
                         return bodyPart.RightUiImage;
                 }
             }
         }
         return null;
+    }
+
+
+    private void ClosePanel()
+    {
+        animator.SetBool("inGame", false);
+    }
+
+    private void OpenPanel()
+    {
+        animator.SetBool("inGame", true);
+    }
+
+    
+    private void StopShake()
+    {
+        animator.SetBool("inDanger", false);
+    }
+
+    private void ShakePanel()
+    {
+        animator.SetBool("inDanger", true);
     }
 
 }
