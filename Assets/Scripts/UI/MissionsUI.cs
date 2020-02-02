@@ -45,6 +45,7 @@ public class MissionsUI : MonoBehaviour
         for (int i = missionCount; i > 0; i--)
         {
             Mission mission = missionsController.ActiveMissions[i - 1];
+            Debug.Log($"J{j}");
             slots[j].Setup(mission, FindPart(mission.leftPartID, EBodyPartSlot.LEFT), FindPart(mission.rightPartID, EBodyPartSlot.RIGHT));
             j++;
         }
@@ -59,11 +60,14 @@ public class MissionsUI : MonoBehaviour
     {
         foreach (var bodyPart in toyBodyConfiguration.BodyPartConfigurations)
         {
-            if (bodyPart.ToyId == id)
+            if (bodyPart.id == id)
             {
-                if (bodyPart.TargetSlot == part)
+                switch(part)
                 {
-                    return bodyPart.uiImage;
+                    case EBodyPartSlot.LEFT: 
+                        return bodyPart.LeftUiImage;
+                    case EBodyPartSlot.RIGHT: 
+                        return bodyPart.RightUiImage;
                 }
             }
         }

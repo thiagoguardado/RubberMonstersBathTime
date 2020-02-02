@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BodyPart : MonoBehaviour
 {
+    public string Id;
     public int OriginalSlot;
     public Transform TargetPosition;
     public int TargetSlot;

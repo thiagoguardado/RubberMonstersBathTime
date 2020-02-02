@@ -20,34 +20,22 @@ MonoBehaviour:
     type: 3}
   BodyPartConfigurations:
   - ToyBodies: []
-    id: robot_l
-    ToyId: robot
-    Prefab: {fileID: -927199367670048503, guid: fbf1a2572d555204cab6ef88e2ee8f90,
+    id: robot
+    LeftPrefab: {fileID: -927199367670048503, guid: 6b1e00a56d4c43b44a3417f21ae96ed0,
       type: 3}
-    TargetSlot: 0
-    uiImage: {fileID: -1720726498158791514, guid: 8fa2839bd39682a40892006dc6f93731,
+    RightPrefab: {fileID: -927199367670048503, guid: fbf1a2572d555204cab6ef88e2ee8f90,
       type: 3}
-  - ToyBodies: []
-    id: robot_r
-    ToyId: robot
-    Prefab: {fileID: -927199367670048503, guid: 6b1e00a56d4c43b44a3417f21ae96ed0,
+    LeftUiImage: {fileID: -1720726498158791514, guid: 8fa2839bd39682a40892006dc6f93731,
       type: 3}
-    TargetSlot: 1
-    uiImage: {fileID: 4351101696639539703, guid: 0c93234bf25e40e4fb7b96290488e402,
+    RightUiImage: {fileID: 4351101696639539703, guid: 0c93234bf25e40e4fb7b96290488e402,
       type: 3}
   - ToyBodies: []
-    id: demon_r
-    ToyId: demon
-    Prefab: {fileID: -927199367670048503, guid: 2d51ef2e4d586ca47b7fd49ec82d0e4f,
+    id: demon
+    LeftPrefab: {fileID: -927199367670048503, guid: 2d51ef2e4d586ca47b7fd49ec82d0e4f,
       type: 3}
-    TargetSlot: 1
-    uiImage: {fileID: -8142140591827123250, guid: 4a02296c0601c604b860fab37249ebce,
+    RightPrefab: {fileID: -927199367670048503, guid: d3b393e592d674541a54e8b60d638d0f,
       type: 3}
-  - ToyBodies: []
-    id: demon_l
-    ToyId: demon
-    Prefab: {fileID: -927199367670048503, guid: d3b393e592d674541a54e8b60d638d0f,
+    LeftUiImage: {fileID: -4897855312749749410, guid: 6227993db8c667c49a38ab8e061d626e,
       type: 3}
-    TargetSlot: 0
-    uiImage: {fileID: -4897855312749749410, guid: 6227993db8c667c49a38ab8e061d626e,
+    RightUiImage: {fileID: -8142140591827123250, guid: 4a02296c0601c604b860fab37249ebce,
       type: 3}
