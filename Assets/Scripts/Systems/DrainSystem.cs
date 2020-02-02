@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class DrainSystem : MonoBehaviour
 {
-    public float startingSeconds = 30f;
+    public GlobalConfigs globalConfigs;
+    public float startingSeconds { get => globalConfigs.drainTime; }
     private float drainLevel { get { return Mathf.Clamp01(1 - timer / startingSeconds); } }
     private bool isDraining = false;
     private bool isPaused = false;
@@ -79,7 +80,7 @@ public class DrainSystem : MonoBehaviour
             if (drainLevel <= 0) FinishDrain();
         }
 
-        
+
     }
 
     private void FinishDrain()

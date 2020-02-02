@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bf70986d7dfa44fa811adc63a37de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingSeconds: 10
+  globalConfigs: {fileID: 11400000, guid: d57e6e98002a57549a83d190c8069037, type: 2}
 --- !u!114 &4099386639007933069
 MonoBehaviour:
   m_ObjectHideFlags: 0

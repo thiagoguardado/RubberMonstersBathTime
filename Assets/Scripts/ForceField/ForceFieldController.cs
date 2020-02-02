@@ -12,6 +12,18 @@ public class ForceFieldController : MonoBehaviour
     public List<ForceField> baseFields;
     public List<ForceField> outerFields;
 
+    private void Awake()
+    {
+        Events.Level.Start += StartFields;
+        Events.Level.Finish += StopFields;
+    }
+
+    private void OnDestroy()
+    {
+        Events.Level.Start -= StartFields;
+        Events.Level.Finish -= StopFields;
+    }
+
     private void Start()
     {
         UpdateForceFields();
@@ -27,19 +39,33 @@ public class ForceFieldController : MonoBehaviour
         if (baseForce != _baseForce)
         {
             _baseForce = baseForce;
-            foreach (ForceField field in baseFields)
-            {
-                field.intensity = baseForce;
-            }
+            UpdateFieldsList(baseFields, _baseForce);
         }
 
         if (outerForce != _outerForce)
         {
             _outerForce = outerForce;
-            foreach (ForceField field in outerFields)
-            {
-                field.intensity = outerForce;
-            }
+            UpdateFieldsList(outerFields, _outerForce);
+        }
+    }
+
+    private void StopFields()
+    {
+        UpdateFieldsList(baseFields, 0f);
+        UpdateFieldsList(outerFields, 0f);
+    }
+
+    private void StartFields()
+    {
+        UpdateFieldsList(baseFields, _baseForce);
+        UpdateFieldsList(outerFields, _outerForce);
+    }
+
+    private void UpdateFieldsList(List<ForceField> fields, float force)
+    {
+        foreach (ForceField field in fields)
+        {
+            field.intensity = force;
         }
     }
 }
