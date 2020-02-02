@@ -326,10 +326,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0f914bc84c53a46b21645d92a265a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreText: {fileID: 0}
-  BathTime: {fileID: 0}
-  Missions: {fileID: 0}
-  BestScore: {fileID: 0}
+  ScoreText: {fileID: 484466117991329284}
+  BathTime: {fileID: 3546970302577661062}
+  Missions: {fileID: 4290198264525085163}
+  BestScore: {fileID: 8203254046456431007}
 --- !u!95 &6907609195140898133
 Animator:
   serializedVersion: 3
