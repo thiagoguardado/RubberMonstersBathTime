@@ -1972,10 +1972,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Configuration: {fileID: 11400000, guid: e19226cd4b08c264a8ba2d7ac43d1d5d, type: 2}
   BodyPartParent: {fileID: 1727231227}
   id1: robot_l
+  slot1: 0
   id2: robot_r
+  slot2: 0
   SpawnArea:
     serializedVersion: 2
     x: 0

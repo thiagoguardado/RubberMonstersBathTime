@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class ToyBody : MonoBehaviour
 {
-    static int LastId = 0;
+    static int LastInstanceId = 0;
 
     public bool Protected = true;
+
+    public int InstanceId{get; private set;}
 
     public int Id { get; private set; }
     public GameObject singleBodyRoot;
@@ -28,7 +30,7 @@ public class ToyBody : MonoBehaviour
 
     public void Start()
     {
-        Id = ++LastId;
+        InstanceId = ++LastInstanceId;
         UpdateBodyPartPositions();
         ProtectAgainstSpamming();
     }
@@ -155,9 +157,10 @@ public class ToyBody : MonoBehaviour
     {
         if (Protected) return;
         ToyBody other = collision.gameObject.GetComponent<ToyBody>();
-        if (other == null) return;
-        if (other.Id < Id) return;
-        if (other.Protected) return;
+
+        if(other == null) return;
+        if(other.InstanceId < InstanceId) return;
+        if(other.Protected) return;
 
         if (this.BodyParts.Count == 1 && other.BodyParts.Count == 1)
         {

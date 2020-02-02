@@ -206,7 +206,7 @@ public class MissionsController : MonoBehaviour
             {
                 CreateRandom();
                 createdRandom = true;
-                break;
+                return;
             }
         }
 
