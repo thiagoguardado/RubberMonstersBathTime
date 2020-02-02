@@ -46,4 +46,12 @@ public class LevelController : MonoBehaviour
             Events.Level.Unpause.SafeInvoke();
         }
     }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            FinishLevel();
+        }
+    }
 }
