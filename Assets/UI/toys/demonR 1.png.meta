@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c5a9c38a02c805449b2dab2fefaf2906
+guid: 4a02296c0601c604b860fab37249ebce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7790424116916007619
-    second: demonL_0
+      213: -8142140591827123250
+    second: demonR 1_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,22 +113,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: demonL_0
+      name: demonR 1_0
       rect:
         serializedVersion: 2
-        x: 165
-        y: 1
-        width: 417
-        height: 1161
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+        x: 0
+        y: 0
+        width: 410
+        height: 1604
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c23a6a75752d1c60800000000000000
-      internalID: 7790424116916007619
+      spriteID: ec30bd8454e410f80800000000000000
+      internalID: -8142140591827123250
       vertices: []
       indices: 
       edges: []
