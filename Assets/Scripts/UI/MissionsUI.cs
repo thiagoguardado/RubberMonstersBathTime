@@ -17,6 +17,12 @@ public class MissionsUI : MonoBehaviour
         Events.Missions.FulfillMission += EliminateMission;
     }
 
+    private void OnDestroy() 
+    {
+        Events.Missions.NewMission -= AddMission;
+        Events.Missions.FulfillMission -= EliminateMission;
+    }
+
     private void Start()
     {
         RefreshSlots();
