@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43785694, g: 0.48578322, b: 0.56605875, a: 1}
+  m_IndirectSpecularColor: {r: 0.4378567, g: 0.48578268, b: 0.56605786, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -386,26 +386,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099386639007933069, guid: dbce6a5dcada1cc419729100155a606b,
-        type: 3}
-      propertyPath: missionsTable.Array.data[0].timeSpan
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099386639007933069, guid: dbce6a5dcada1cc419729100155a606b,
-        type: 3}
-      propertyPath: missionsTable.Array.data[1].timeSpan
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099386639007933069, guid: dbce6a5dcada1cc419729100155a606b,
-        type: 3}
-      propertyPath: missionsTable.Array.data[2].timeSpan
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099386639007933069, guid: dbce6a5dcada1cc419729100155a606b,
-        type: 3}
-      propertyPath: missionsTable.Array.data[3].timeSpan
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7546596992834453667, guid: dbce6a5dcada1cc419729100155a606b,
         type: 3}
