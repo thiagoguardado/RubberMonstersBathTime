@@ -25,9 +25,17 @@ MonoBehaviour:
       type: 3}
     RightPrefab: {fileID: -927199367670048503, guid: fbf1a2572d555204cab6ef88e2ee8f90,
       type: 3}
-  - ToyBodies: []
-    id: robot_r
-    LeftPrefab: {fileID: -927199367670048503, guid: d3b393e592d674541a54e8b60d638d0f,
+    LeftUiImage: {fileID: -1720726498158791514, guid: 8fa2839bd39682a40892006dc6f93731,
       type: 3}
-    RightPrefab: {fileID: -927199367670048503, guid: 2d51ef2e4d586ca47b7fd49ec82d0e4f,
+    RightUiImage: {fileID: 4351101696639539703, guid: 0c93234bf25e40e4fb7b96290488e402,
+      type: 3}
+  - ToyBodies: []
+    id: demon
+    LeftPrefab: {fileID: -927199367670048503, guid: 2d51ef2e4d586ca47b7fd49ec82d0e4f,
+      type: 3}
+    RightPrefab: {fileID: -927199367670048503, guid: d3b393e592d674541a54e8b60d638d0f,
+      type: 3}
+    LeftUiImage: {fileID: -4897855312749749410, guid: 6227993db8c667c49a38ab8e061d626e,
+      type: 3}
+    RightUiImage: {fileID: -8142140591827123250, guid: 4a02296c0601c604b860fab37249ebce,
       type: 3}

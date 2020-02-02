@@ -28,18 +28,15 @@ public class ToysController : MonoBehaviour
 
     public IEnumerator SpawnCR()
     {
-        Debug.Log("Spawn routine started");
         yield return new WaitForSeconds(1.0f);
         while(true)
         {
-            Debug.Log("Starting spawn wave");
             for(int i = 0; i < 2; i++)
             {
-                Debug.Log("Spawning");
                 Spawn();
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.5f);
             }
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(5f);
         }
     }
 

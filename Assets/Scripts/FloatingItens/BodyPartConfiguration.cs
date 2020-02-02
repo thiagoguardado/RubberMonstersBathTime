@@ -8,5 +8,6 @@ public class BodyPartConfiguration
     public string id;
     public GameObject LeftPrefab;
     public GameObject RightPrefab;
-    public Sprite uiImage;
+    public Sprite LeftUiImage;
+    public Sprite RightUiImage;
 }

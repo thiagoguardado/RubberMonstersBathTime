@@ -119,7 +119,6 @@ public class ToyBody : MonoBehaviour
 
     public void Join(ToyBody other)
     {
-        Debug.Log("join is happening");
         if(BodyParts.Count > 1 || other.BodyParts.Count > 1)
         {
             return;
@@ -142,11 +141,9 @@ public class ToyBody : MonoBehaviour
         if(other == null) return;
         if(other.InstanceId < InstanceId) return;
         if(other.Protected) return;
-        Debug.Log("collide");
 
         if(this.BodyParts.Count == 1 && other.BodyParts.Count == 1)
         {
-            Debug.Log("trying to join");
             other.Join(this);
             ProtectAgainstSpamming();
         }
