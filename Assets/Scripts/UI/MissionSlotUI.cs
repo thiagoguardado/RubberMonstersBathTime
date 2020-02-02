@@ -6,13 +6,18 @@ using UnityEngine.UI;
 public class MissionSlotUI : MonoBehaviour
 {
     private Mission mission;
+    public Image background;
     public Image leftImage;
     public Image rightImage;
 
+    public Animator okAnimator;
+
+    public Mission Mission => mission;
+
     public void Setup(Mission mission, Sprite leftSprite, Sprite rightSprite)
     {
-        gameObject.SetActive(true);
         this.mission = mission;
+        this.background.enabled = true;
         this.leftImage.sprite = leftSprite;
         this.leftImage.enabled = true;
         this.rightImage.sprite = rightSprite;
@@ -21,11 +26,16 @@ public class MissionSlotUI : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false);
         mission = null;
+        this.background.enabled = false;
         this.leftImage.sprite = null;
         this.leftImage.enabled = false;
         this.rightImage.sprite = null;
         this.rightImage.enabled = false;
+    }
+
+    public void Fullfill()
+    {
+        okAnimator.SetTrigger("done");
     }
 }

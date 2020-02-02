@@ -200,6 +200,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d470d96d8370c37459b5158d5b67828e, type: 3}
     - {fileID: 8300000, guid: be885ff6a7e859f4fbcd54c1c65013f6, type: 3}
     - {fileID: 8300000, guid: d13044b65b1367447bdd120323e8c30b, type: 3}
+  - id: rubber
+    audioClips:
+    - {fileID: 8300000, guid: 011a9dfbe52fe714a8051331552cf6b8, type: 3}
+    - {fileID: 8300000, guid: a5d7e1b31335c8c4b9e7301e9d4116d9, type: 3}
   sfxPlayer: {fileID: 11812795}
   baseBGM: {fileID: 3050571717569829879}
   gameplayBGM: {fileID: 8336235579223005721}
@@ -217,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d56f188b26100459c15e84ada3b7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 99df1aad0f4f20c48b50c49ed7b64140, type: 3}
+  audioClip: {fileID: 8300000, guid: 1c8451eecb6612f4ba28c053f6e5ee46, type: 3}
 --- !u!114 &3050571717569829879
 MonoBehaviour:
   m_ObjectHideFlags: 0

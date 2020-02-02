@@ -46,6 +46,17 @@ public class MissionsUI : MonoBehaviour
 
     private void EliminateMission(Mission mission)
     {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].Mission != null)
+            {
+                if (mission.Id == slots[i].Mission.Id)
+                {
+                    slots[i].Fullfill();
+                }
+            }
+        }
+
         RefreshSlots();
     }
 
@@ -95,7 +106,7 @@ public class MissionsUI : MonoBehaviour
         animator.SetBool("inGame", true);
     }
 
-    
+
     private void StopShake()
     {
         animator.SetBool("inDanger", false);
