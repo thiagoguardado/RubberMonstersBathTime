@@ -39,3 +39,19 @@ MonoBehaviour:
       type: 3}
     RightUiImage: {fileID: -8142140591827123250, guid: 4a02296c0601c604b860fab37249ebce,
       type: 3}
+  - ToyBodies: []
+    id: spike
+    LeftPrefab: {fileID: -927199367670048503, guid: ffaa8b99d90fe594bbc55936e9a709e5,
+      type: 3}
+    RightPrefab: {fileID: -927199367670048503, guid: 5d01afd7e8344274d97dbb05bdf4fa18,
+      type: 3}
+    LeftUiImage: {fileID: 21300000, guid: 476ed7d291bdf4c48b5bfcb6c4b71e62, type: 3}
+    RightUiImage: {fileID: 21300000, guid: 81dcfbb254dcc2f42a1812aaa246f7fe, type: 3}
+  - ToyBodies: []
+    id: duck
+    LeftPrefab: {fileID: -927199367670048503, guid: 780221090726f6448b531c6bdbe13cf9,
+      type: 3}
+    RightPrefab: {fileID: -927199367670048503, guid: 1482df7cb0870aa4f84e917d2040a871,
+      type: 3}
+    LeftUiImage: {fileID: 21300000, guid: 778acc17f39c69747937425aa4fdcca5, type: 3}
+    RightUiImage: {fileID: 21300000, guid: 5a7bc98b788e9ed48a016ec87346dd75, type: 3}
