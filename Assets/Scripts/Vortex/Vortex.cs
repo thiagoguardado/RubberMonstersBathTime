@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vortex : MonoBehaviour
 {
-
+    private Animator animator;
     public LayerMask influencedLayers;
     public Color debugColor = Color.cyan;
     private float initiaScale;
@@ -12,13 +12,15 @@ public class Vortex : MonoBehaviour
     private float radialIntensity;
     private float tangencialIntensity;
     private Collider[] hitColliders;
-    private SpriteRenderer sprite;
+    public SpriteRenderer sprite;
     private float spriteSizeRatio;
 
     private float radius { get { return transform.localScale.x; } }
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         initiaScale = transform.localScale.x;
 
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -45,6 +47,8 @@ public class Vortex : MonoBehaviour
         }
 
         sprite.gameObject.SetActive(true);
+
+        animator.SetTrigger("startPulse");
     }
 
     public void MoveVortex(Vector3 position)

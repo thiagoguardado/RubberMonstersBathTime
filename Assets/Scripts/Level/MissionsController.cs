@@ -61,6 +61,7 @@ public struct MissionTableUnit
 
 public class MissionsController : MonoBehaviour
 {
+    public GlobalConfigs globalConfigs;
     public float initialDelay = 2f;
     public int maxActiveMissions = 3;
     public List<MissionTableUnit> missionsTable = new List<MissionTableUnit>();
@@ -154,6 +155,13 @@ public class MissionsController : MonoBehaviour
                 Events.Missions.FulfillMission.SafeInvoke(mission);
 
                 ToggleDrain();
+
+                // if no missions, reduce wait before next
+                if (activeMissions.Count <= 0)
+                {
+                    missionTimer = missionsTable[currentLevel].timeSpan - globalConfigs.autoCreateMissionDelay;
+                }
+
                 break;
             }
         }

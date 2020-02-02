@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52a3d17bde45f24b83398e41a8c32ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalConfigs: {fileID: 11400000, guid: d57e6e98002a57549a83d190c8069037, type: 2}
   initialDelay: 1
   maxActiveMissions: 3
   missionsTable:
