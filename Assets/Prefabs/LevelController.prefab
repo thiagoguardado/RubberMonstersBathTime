@@ -208,21 +208,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52a3d17bde45f24b83398e41a8c32ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDelay: 5
+  initialDelay: 1
   maxActiveMissions: 3
   missionsTable:
-  - duration: 10
-    possibleIds: robot
+  - duration: 20
+    possibleIds: duck
     value: 100
     timeSpan: 7
-  - duration: 20
-    possibleIds: robot,demon
+  - duration: 40
+    possibleIds: duck,spike
     value: 200
-    timeSpan: 5
-  - duration: 20
-    possibleIds: robot,demon
+    timeSpan: 7
+  - duration: 60
+    possibleIds: duck,spike,robot
     value: 300
-    timeSpan: 2
+    timeSpan: 7
+  - duration: 120
+    possibleIds: duck,spike,robot,demon
+    value: 300
+    timeSpan: 7
 --- !u!114 &1748689044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,22 +243,22 @@ MonoBehaviour:
   limits_maxX: {fileID: 267152628}
   limits_minZ: {fileID: 2032531246}
   limits_maxZ: {fileID: 1985652032}
-  initialDelay: 2
+  initialDelay: 1
   retryDelay: 0.5
   toysTable:
-  - duration: 5
-    possibleIds: robot
+  - duration: 20
+    possibleIds: duck
     maxToys: 1
     timeSpan: 2
-  - duration: 10
-    possibleIds: robot
+  - duration: 40
+    possibleIds: duck,spike
     maxToys: 2
     timeSpan: 2
-  - duration: 20
-    possibleIds: robot,demon
+  - duration: 60
+    possibleIds: robot,spike,duck
     maxToys: 4
     timeSpan: 2
-  - duration: 20
-    possibleIds: robot,demon
+  - duration: 120
+    possibleIds: robot,spike,duck,demon
     maxToys: 6
     timeSpan: 2
