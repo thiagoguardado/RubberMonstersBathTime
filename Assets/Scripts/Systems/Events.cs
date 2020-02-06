@@ -43,4 +43,9 @@ public static class Events
         public static Action Start;
         public static Action Stop;
     }
+
+    public static class Score
+    {
+        public static Action<int> Update;
+    }
 }
