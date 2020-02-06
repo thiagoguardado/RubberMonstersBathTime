@@ -116,12 +116,12 @@ TextureImporter:
       name: card_holder_background_0
       rect:
         serializedVersion: 2
-        x: 347
-        y: 466
-        width: 6659
-        height: 1998
+        x: 0
+        y: 0
+        width: 7484
+        height: 2668
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
