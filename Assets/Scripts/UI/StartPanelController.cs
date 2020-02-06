@@ -5,41 +5,57 @@ using UnityEngine;
 
 public class StartPanelController : MonoBehaviour
 {
-    private Animator animator;
-    private SFXDispatcher sFXDispatcher;
+  private Animator animator;
+  private SFXDispatcher sFXDispatcher;
 
-    void Awake()
-    {
-        animator = GetComponent<Animator>();
-        sFXDispatcher = GetComponent<SFXDispatcher>();
+  void Awake()
+  {
+    animator = GetComponent<Animator>();
+    sFXDispatcher = GetComponent<SFXDispatcher>();
 
-        Events.Level.ShowTitle += OpenPanel;
-    }
+    Events.Level.ShowTitle += OpenPanel;
+  }
 
-    void OnDestroy()
-    {
-        Events.Level.ShowTitle -= OpenPanel;
-    }
+  void OnDestroy()
+  {
+    Events.Level.ShowTitle -= OpenPanel;
+  }
 
-    private void OpenPanel()
-    {
-        animator.SetBool("opened", true);
-    }
+  private void OpenPanel()
+  {
+    animator.SetBool("opened", true);
+  }
 
-    public void StartGame()
-    {
-        animator.SetBool("opened", false);
+  public void StartGame()
+  {
+    animator.SetBool("opened", false);
 
-        sFXDispatcher.PlaySfxOnce();
+    sFXDispatcher.PlaySfxOnce();
 
-        // start game
-        Events.Level.Start.SafeInvoke();
-    }
+    // start game
+    Events.Level.Start.SafeInvoke();
+  }
 
-    public void Quit()
-    {
-        Application.Quit();
+  public void Quit()
+  {
+    Application.Quit();
 
-        sFXDispatcher.PlaySfxOnce();
-    }
+    sFXDispatcher.PlaySfxOnce();
+  }
+
+  public void OpenCredits()
+  {
+    animator.SetBool("creditsOpened", true);
+  }
+
+  public void OpenTutorial()
+  {
+    animator.SetBool("tutorialOpened", true);
+  }
+
+  public void ClosePanel()
+  {
+    animator.SetBool("creditsOpened", false);
+    animator.SetBool("tutorialOpened", false);
+  }
 }
