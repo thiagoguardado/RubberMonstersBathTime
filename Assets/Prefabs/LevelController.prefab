@@ -209,13 +209,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalConfigs: {fileID: 11400000, guid: d57e6e98002a57549a83d190c8069037, type: 2}
-  initialDelay: 2
+  initialDelay: 0.8
   maxActiveMissions: 3
   missionsTable:
   - duration: 20
     possibleIds: duck
     value: 100
-    timeSpan: 7
+    timeSpan: 8
   - duration: 25
     possibleIds: duck,spike
     value: 200
@@ -235,7 +235,7 @@ MonoBehaviour:
   - duration: 60
     possibleIds: duck,spike,robot,demon
     value: 600
-    timeSpan: 2
+    timeSpan: 3.5
 --- !u!114 &1748689044
 MonoBehaviour:
   m_ObjectHideFlags: 0
